@@ -1,0 +1,24 @@
+﻿<h3>Dnn_Connect_XSF_Module</h3>
+<p class="Contributor">
+	dnn-connect.org <br />
+	<a href="mailto:info@2sxc.org">info@2sxc.org</a><br />
+	<a href=https://2sxc.org/>https://2sxc.org/</a><br />
+	This extension was created using <a href="http://www.christoc.com">Christoc's</a> Module Development Templates for DNN.
+</p>
+<hr/>
+<div class="License">
+	<h3>About the Dnn_Connect_XSF_Module</h3>
+	<p class="Owner">
+		<b>Version CHANGEME</b><br /><br />
+	</p>
+	<p>Description about version.</p>
+	
+	<h4>Bug Fixes</h4>
+	<ul>
+			<li>List</li>
+			<li>of</li>
+			<li>bug</li>
+			<li>fixes</li>
+	</ul>
+	
+</div>
