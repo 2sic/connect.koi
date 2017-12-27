@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using Connect.Koi.Helpers;
 
 namespace Connect.Koi
 {
     public class Part
     {
 
-        public const string Initial = "def";
-        public const string All = "all";
+        public const string Initial = Css.Unknown;
+        public const string All = Css.All;
 
         public string Default = Initial;
 
@@ -21,30 +24,43 @@ namespace Connect.Koi
 
         public bool Is(string compare) => string.Equals(Current, compare, StringComparison.InvariantCultureIgnoreCase);
 
-        public string Pick(string[,] list) => Find(list, Current) ?? Find(list, Default);
-        public string Pick(string[][] list) => Find(list, Current) ?? Find(list, Default);
-        public string Pick(string list) => Pick(list.Split(',').Select(i => i.Split(':')).ToArray());
+        public string Pick(string list)
+        {
+            var parts = ClassesRegEx.Matches(list).AsEnumerable().SelectMany(m =>
 
-        private static string Find(string[,] list, string key)
-        {
-            for (var i = 0; i < list.Length; i++)
-                if (string.Equals(list[i, 0], key, StringComparison.InvariantCultureIgnoreCase))
-                    return list[i, 1];
-            return null;
-        }
-        private static string Find(string[][] list, string key)
-        {
-            foreach (string[] itm in list)
-                if (string.Equals(itm[0], key, StringComparison.InvariantCultureIgnoreCase))
-                    return itm[1];
-            return null;
+                    m.Groups["Name"].Value.Split(',')
+                    .Select(k => new {Key = k, m.Groups["Classes"].Value})
+                )
+                .ToDictionary(s => s.Key, s => s.Value);
+                //.ToDictionary(m => m.Groups["Name"].Value, m => m.Groups["Classes"].Value);
+
+            return Pick(parts);
         }
 
-        private const string Classwrapper= "class=\"{0}\"";
-        public string Class(string[,] list) => Classify(() => Pick(list));
-        public string Class(string[][] list) => Classify(() => Pick(list));
+        public string Pick(IDictionary<string, string> list)
+        {
+            var all = list.ContainsKey(Css.All) ? list[Css.All] : null;
+            var best = list.ContainsKey(Current) ? list[Current] : null;
+            var preferred = best ?? (list.ContainsKey(Css.Unknown)
+                                ? list[Css.Unknown]
+                                : null);
+
+            return $"{all} {preferred}".Trim();
+        }
+
+
+        private static Regex ClassesRegEx => new Regex(@"(?<Name>[a-z0-9,]*)[:=][\['""](?<Classes>[^\]'""]*)[\]'""]");
+
+        private const string ClassWrapper= "class=\"{0}\"";
+
+        //private const string StyleWrapper = "style=\"{0}\"";
+
         public string Class(string list) => Classify(() => Pick(list));
+        public string Class(IDictionary<string, string> list) => Classify(() => Pick(list));
 
-        private string Classify(Func<string> pick) => string.Format(Classwrapper, pick());
+
+
+        private static string Classify(Func<string> pick) => string.Format(ClassWrapper, pick());
+        //private string Styleify(Func<string> pick) => string.Format(StyleWrapper, pick());
     }
 }

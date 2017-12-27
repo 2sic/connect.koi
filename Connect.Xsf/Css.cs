@@ -1,4 +1,4 @@
-﻿namespace Connect.Koi.Frameworks
+﻿namespace Connect.Koi
 {
     /// <summary>
     /// Commonly agreed upon keys / identifications for css frameworks
@@ -7,11 +7,13 @@
     /// Please adhere to the basic convention as follows:
     /// - each key is always 3 characters long (a-z only)
     /// - each framework gets a 2 character general code which is used in all keys of that framework
-    /// - additionaly, we add the version in a 3 digit syntax, to support frameworks like bulma
+    /// - additionaly, we add the version in a 1-2 digit syntax, to support frameworks like bulma
     /// - if you're using a semantic-versioned 
     /// </remarks>
     /// <remarks>
     /// Please don't add any ultra-old CSS Frameworks, like
+    /// anybody can still support it, but we don't want to clutter our "standard" names
+    /// with almost unused frameworks
     /// - 1140 Grid - very dead
     /// - 960 GS - dead since 2014
     /// - Skelleton - dead since 2014
@@ -19,17 +21,20 @@
     /// </remarks>
     public class Css
     {
-        // As 960GS is a number, we must use a text-variable
-        public const string NineSixtyGsPrefix = "nsg";
-        public const string NineSixtyGs = NineSixtyGsPrefix;
+        // code for all-frameworks
+        public const string All = "all";
+
+        // The unknown-framework 
+        public const string Unknown = "unk";
 
 
         // Bootstrap
-        public const string BootstrapPrefix = "bst";
+        public const string BootstrapPrefix = "bot";
         public const string Bootstrap2 = BootstrapPrefix + V2;
         public const string Bootstrap3 = BootstrapPrefix + V3;
         public const string Bootstrap4 = BootstrapPrefix + V4;
         public const string Bootstrap5 = BootstrapPrefix + V5;
+
 
         // Bulma - https://bulma.io/
         // Note: Bulma uses a version which is 0.x, so ATM it's not a good fit yet
@@ -77,21 +82,21 @@
         public const string UiKit3 = UiKitPrefix + V3;
         public const string UiKit4 = UiKitPrefix + V4;
 
-        // YAML
+        // YAML - http://www.yaml.de/
         public const string YamlPrefix = "yml";
         public const string Yaml3 = YamlPrefix + V3;
         public const string Yaml4 = YamlPrefix + V4;
 
 
-        private const string V0 = "00";
-        private const string V1 = "01";
-        private const string V2 = "02";
-        private const string V3 = "03";
-        private const string V4 = "04";
-        private const string V5 = "05";
-        private const string V6 = "06";
-        private const string V7 = "07";
-        private const string V8 = "08";
-        private const string V9 = "09";
+        private const string V0 = "0";
+        private const string V1 = "1";
+        private const string V2 = "2";
+        private const string V3 = "3";
+        private const string V4 = "4";
+        private const string V5 = "5";
+        private const string V6 = "6";
+        private const string V7 = "7";
+        private const string V8 = "8";
+        private const string V9 = "9";
     }
 }

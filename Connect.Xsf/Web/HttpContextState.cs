@@ -3,13 +3,18 @@ using System.Web;
 
 namespace Connect.Koi.Web
 {
-    public class RequestState: State
+    /// <summary>
+    /// This is the helper class for the full .net framework
+    /// In .net core it will probably have to be a bit different
+    /// </summary>
+    internal class HttpContextState: State
     {
         public override string CssFramework
         {
             get => HttpContext.Current.Items.Contains(Keys.CssFramework)
                 ? HttpContext.Current.Items[Keys.CssFramework].ToString() 
                 : null;
+
             set
             {
                 // prevent duplicate set, to catch common errors

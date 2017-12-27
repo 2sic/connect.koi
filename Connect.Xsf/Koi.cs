@@ -19,7 +19,7 @@ namespace Connect.Koi
         /// </summary>
         public static string Css
         {
-            get => Pond.State.CssFramework;
+            get => Pond.State.CssFramework ?? Connect.Koi.Css.Unknown;
             set => Pond.State.CssFramework = value;
         }
 
