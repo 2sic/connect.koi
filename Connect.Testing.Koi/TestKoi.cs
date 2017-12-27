@@ -21,7 +21,7 @@ namespace Connect.Testing.Koi
         [TestMethod]
         public void Basic()
         {
-            var koi = new Connect.Koi.Koi(Bs3);
+            var koi = new Connect.Koi.Part(Bs3);
             Assert.AreEqual(Bs3, koi.Current);
 
             Assert.IsTrue(koi.Is(Bs3));
@@ -31,17 +31,17 @@ namespace Connect.Testing.Koi
         [TestMethod]
         public void Pick()
         {
-            var result = new Connect.Koi.Koi(Bs3).Pick(Classes);
+            var result = new Connect.Koi.Part(Bs3).Pick(Classes);
             Assert.AreEqual(result, Bs3Cls);
 
-            var resultfd = new Connect.Koi.Koi(Fd6).Pick(Classes);
+            var resultfd = new Connect.Koi.Part(Fd6).Pick(Classes);
             Assert.AreEqual(resultfd, Fd6Cls);
         }
 
         [TestMethod]
         public void PickInline()
         {
-            var result = new Connect.Koi.Koi(Bs3).Pick(new[,] {{Bs3, Bs3Cls}, {Fd6, Fd6Cls}});
+            var result = new Connect.Koi.Part(Bs3).Pick(new[,] {{Bs3, Bs3Cls}, {Fd6, Fd6Cls}});
             Assert.AreEqual(result, Bs3Cls);
 
         }
@@ -49,21 +49,21 @@ namespace Connect.Testing.Koi
         [TestMethod]
         public void PickStringNotation()
         {
-            var result2 = new Connect.Koi.Koi(Bs3).Pick(ClassesString);
+            var result2 = new Connect.Koi.Part(Bs3).Pick(ClassesString);
             Assert.AreEqual(result2, Bs3Cls);
         }
 
         [TestMethod]
         public void PickNotFound()
         {
-            var result2 = new Connect.Koi.Koi(Unknown).Pick(ClassesString);
+            var result2 = new Connect.Koi.Part(Unknown).Pick(ClassesString);
             Assert.IsNull(result2);
         }
 
         [TestMethod]
         public void ClassStringNotation()
         {
-            var clsAttrib = new Connect.Koi.Koi(Fd6).Class(ClassesString);
+            var clsAttrib = new Connect.Koi.Part(Fd6).Class(ClassesString);
             Assert.AreEqual("class=\"" + Fd6Cls + "\"", clsAttrib);
         }
     }
