@@ -6,7 +6,7 @@ namespace Connect.Koi
     {
         public State State = new HttpContextState();
 
-        public Part Part => _part ?? (_part = new Part(State.CssFramework));
-        private Part _part;
+        public TemplateHelper TemplateHelper => _templateHelper ?? (_templateHelper = new TemplateHelper(State.CssFramework));
+        private TemplateHelper _templateHelper;
     }
 }

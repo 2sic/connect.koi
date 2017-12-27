@@ -29,7 +29,7 @@
 
 
         // Bootstrap
-        public const string BootstrapPrefix = "bot";
+        public const string BootstrapPrefix = "bs";
         public const string Bootstrap2 = BootstrapPrefix + V2;
         public const string Bootstrap3 = BootstrapPrefix + V3;
         public const string Bootstrap4 = BootstrapPrefix + V4;

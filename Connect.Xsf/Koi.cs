@@ -25,7 +25,7 @@ namespace Connect.Koi
 
 
 
-        public static string Class(string classes) => Pond.Part.Class(classes);
+        public static HtmlString Class(string classes) => new HtmlString(Pond.TemplateHelper.Class(classes));
 
     }
 }
