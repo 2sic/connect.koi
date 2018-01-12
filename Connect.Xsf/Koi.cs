@@ -23,7 +23,12 @@ namespace Connect.Koi
             set => Pond.State.CssFramework = value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool IsUnknown => Pond.State.CssFramework == Connect.Koi.Css.Unknown;
 
+        public static HtmlString IfUnknown(string htmlToShow, string alternative = "") => new HtmlString(IsUnknown ? htmlToShow : alternative);
 
         public static HtmlString Class(string classes) => new HtmlString(Pond.TemplateHelper.Class(classes));
 
