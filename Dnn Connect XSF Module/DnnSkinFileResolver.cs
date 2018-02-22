@@ -8,6 +8,7 @@ using System.IO;
 using System.Web.Helpers;
 using System.Runtime.Caching;
 using System.Collections.Generic;
+using System.Web.Hosting;
 
 namespace Connect.XSF
 {
@@ -23,19 +24,11 @@ namespace Connect.XSF
 
         public override string GetCSSFramework()
         {
+            
             try
             {
-                var skin = HttpContext.Current?.Request.QueryString[SkinSrcParameter]
-                    ?? PortalSettings.Current.ActiveTab.SkinSrc;
+                var koiPath = HostingEnvironment.MapPath(Path.Combine(GetSkinPath(), KoiJsonFile));
 
-                if (String.IsNullOrEmpty(skin))
-                    skin = PortalController.GetPortalSetting(DnnSettingDefaultPortalSkin, PortalSettings.Current.PortalId,
-                                Host.DefaultPortalSkin);
-
-                skin = SkinController.FormatSkinSrc(skin, PortalSettings.Current);
-                skin = skin.Substring(0, skin.LastIndexOf("/") + 1);
-                
-                var koiPath = System.Web.Hosting.HostingEnvironment.MapPath(Path.Combine(skin, KoiJsonFile));
                 ObjectCache cache = MemoryCache.Default;
                 var cssFramework = cache[CacheKey + koiPath.ToLower()] as string;
                 
@@ -64,5 +57,18 @@ namespace Connect.XSF
             return null;
         }
 
+        private string GetSkinPath()
+        {
+            // Get skin path
+            var skin = HttpContext.Current?.Request.QueryString [SkinSrcParameter]
+                    ?? PortalSettings.Current.ActiveTab.SkinSrc;
+
+            if (String.IsNullOrEmpty(skin))
+                skin = PortalController.GetPortalSetting(DnnSettingDefaultPortalSkin, PortalSettings.Current.PortalId,
+                            Host.DefaultPortalSkin);
+
+            skin = SkinController.FormatSkinSrc(skin, PortalSettings.Current);
+            return skin.Substring(0, skin.LastIndexOf("/") + 1);
+        }
     }
 }
