@@ -9,20 +9,21 @@ using System.Web.Helpers;
 using System.Runtime.Caching;
 using System.Collections.Generic;
 using System.Web.Hosting;
+using Connect.Koi.Detectors;
 
 namespace Connect.XSF
 {
     /// <summary>
     /// Picks up a file named koi.json in the skin file which declares the skin's CSS framework
     /// </summary>
-    internal class DnnSkinFileResolver : Koi.FrameworkResolver
+    internal class DnnSkinFile : CssFramework
     {
         private const string KoiJsonFile = "koi.json";
         private const string DnnSettingDefaultPortalSkin = "DefaultPortalSkin";
         private const string CacheKey = "connect-koi-json-";
         private const string SkinSrcParameter = "SkinSrc";
 
-        public override string GetCSSFramework()
+        public override string AutoDetect()
         {
             
             try

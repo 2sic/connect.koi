@@ -1,7 +1,7 @@
 ﻿<div class="License">
 	<h3>License</h3>
 	<p class="Owner">
-		dnn-connect.org  <a href=https://2sxc.org/>https://2sxc.org/</a></br>
+		dnn-connect.org, 2sic.com and 2sxc.org <a href="https://2sxc.org/">https://2sxc.org/</a></br>
 		Copyright (c) 2017</br>	
 		by dnn-connect.org</br>
 	</p>

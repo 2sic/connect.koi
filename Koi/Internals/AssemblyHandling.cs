@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Koi.Helpers
+namespace Connect.Koi.Internals
 {
-    public class AssemblyHandling
+    internal class AssemblyHandling
     {
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Koi
+﻿namespace Connect.Koi
 {
     /// <summary>
     /// Commonly agreed upon keys / identifications for css frameworks
@@ -19,7 +19,7 @@
     /// - Skelleton - dead since 2014
     /// - YUI - dead
     /// </remarks>
-    public class Css
+    public class CssFrameworks
     {
         // code for all-frameworks
         public const string All = "all";
@@ -30,7 +30,6 @@
 
         // Bootstrap
         public const string BootstrapPrefix = "bs";
-        public const string Bootstrap2 = BootstrapPrefix + V2;
         public const string Bootstrap3 = BootstrapPrefix + V3;
         public const string Bootstrap4 = BootstrapPrefix + V4;
         public const string Bootstrap5 = BootstrapPrefix + V5;

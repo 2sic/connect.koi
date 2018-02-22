@@ -1,6 +1,6 @@
-﻿namespace Koi
+﻿namespace Connect.Koi.Context
 {
-    public abstract class State
+    public abstract class StateBase
     {
         public abstract string CssFramework { get; set; }
     }
