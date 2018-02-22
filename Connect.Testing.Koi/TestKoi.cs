@@ -1,4 +1,4 @@
-﻿using Connect.Koi;
+﻿using Koi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Connect.Testing.Koi

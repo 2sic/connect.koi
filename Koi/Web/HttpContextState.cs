@@ -2,7 +2,7 @@
 using System.Web;
 using System.Linq;
 
-namespace Connect.Koi.Web
+namespace Koi.Web
 {
     /// <summary>
     /// This is the helper class for the full .net framework
@@ -13,21 +13,22 @@ namespace Connect.Koi.Web
         public override string CssFramework
         {
             get {
-
-                // If not already done in this request, find FrameworkResolver class and get css framework
+                // Type of HttpContext.Current.Items differs for netstandard2.0 and net451
+                // if we want to support netstandard2.0 we must solve this
+#if NET451
                 if (!HttpContext.Current.Items.Contains(Keys.CssFramework)) {
-                    var value = Css.Unknown;
+                    var framework = Css.Unknown;
                     var type = Helpers.AssemblyHandling.FindInherited(typeof(FrameworkResolver)).FirstOrDefault();
                     if(type != null)
                     {
                         var resolver = (FrameworkResolver)Activator.CreateInstance(type);
-                        value = resolver.GetCSSFramework() ?? Css.Unknown;
+                        framework = resolver.GetCSSFramework();
                     }
-                    HttpContext.Current.Items.Add(Keys.CssFramework, value);
+                    HttpContext.Current.Items.Add(Keys.CssFramework, framework ?? Css.Unknown);
                 }
-                
-                return HttpContext.Current.Items[Keys.CssFramework].ToString();
+#endif
 
+                return HttpContext.Current.Items[Keys.CssFramework].ToString();
             }
 
             set

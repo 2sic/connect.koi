@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Css.cs" />
+    <Compile Include="FrameworkResolver.cs" />
+    <Compile Include="Helpers\AssemblyHandling.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="TemplateHelper.cs" />
@@ -52,6 +54,11 @@
     <Compile Include="TemplateHelper_Class.cs" />
     <Compile Include="Web\HttpContextState.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Koi\Koi.csproj">
+      <Project>{d6af8495-a17c-42be-901b-ca319b6bddfa}</Project>
+      <Name>Koi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
