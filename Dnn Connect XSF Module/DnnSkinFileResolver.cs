@@ -59,7 +59,6 @@ namespace Connect.XSF
 
         private string GetSkinPath()
         {
-            // Get skin path
             var skin = HttpContext.Current?.Request.QueryString [SkinSrcParameter]
                     ?? PortalSettings.Current.ActiveTab.SkinSrc;
 

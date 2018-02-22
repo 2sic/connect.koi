@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using System.Linq;
 
 namespace Koi.Web
@@ -13,10 +12,7 @@ namespace Koi.Web
         public override string CssFramework
         {
             get {
-                // Type of HttpContext.Current.Items differs for netstandard2.0 and net451
-                // if we want to support netstandard2.0 we must solve this
-#if NET451
-                if (!HttpContext.Current.Items.Contains(Keys.CssFramework)) {
+                if (HttpContext.Current.Items[Keys.CssFramework] == null) {
                     var framework = Css.Unknown;
                     var type = Helpers.AssemblyHandling.FindInherited(typeof(FrameworkResolver)).FirstOrDefault();
                     if(type != null)
@@ -26,7 +22,6 @@ namespace Koi.Web
                     }
                     HttpContext.Current.Items.Add(Keys.CssFramework, framework ?? Css.Unknown);
                 }
-#endif
 
                 return HttpContext.Current.Items[Keys.CssFramework].ToString();
             }
