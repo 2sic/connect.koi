@@ -2,6 +2,6 @@
 {
     public abstract class StateBase
     {
-        public abstract string CssFramework { get; set; }
+        public abstract string CssFramework { get; }
     }
 }

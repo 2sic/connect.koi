@@ -18,7 +18,7 @@ namespace Connect.Koi.Internals
 #else
                 // when running in .net standard / .net core, 
                 // it will probably need to go through dependency injection
-                // but fro now it's not implemented yet
+                // but for now it's not implemented yet
                 throw new System.NotImplementedException();
 #endif
             }

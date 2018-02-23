@@ -1,15 +1,13 @@
-﻿using System;
-using System.Web;
-using DotNetNuke.Entities.Portals;
+﻿using Connect.Koi.Detectors;
 using DotNetNuke.Entities.Host;
-using DotNetNuke.Entities.Tabs;
+using DotNetNuke.Entities.Portals;
 using DotNetNuke.UI.Skins;
+using System;
 using System.IO;
-using System.Web.Helpers;
 using System.Runtime.Caching;
-using System.Collections.Generic;
+using System.Web;
+using System.Web.Helpers;
 using System.Web.Hosting;
-using Connect.Koi.Detectors;
 
 namespace Connect.XSF
 {

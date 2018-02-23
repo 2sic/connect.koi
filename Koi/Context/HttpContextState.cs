@@ -23,23 +23,6 @@ namespace Connect.Koi.Context
 
                 return items[Keys.CssFramework]?.ToString();
             }
-
-            set
-            {
-                // prevent duplicate set, to catch common errors
-                var previous = CssFramework;
-
-                // trying to set to same value as before, so just skip
-                if (previous == value) return;
-
-                // there was already a value, and it's different
-                if(previous != null)
-                    throw new Exception($"trying to set css framework:'{value}', but it was already set:'{previous}'");
-
-                // all ok, just set
-                HttpContext.Current.Items.Add(Keys.CssFramework, value);
-
-            }
         }
 
         private static void TryToDetectTheCssFramework()
