@@ -2,13 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/
-/Connect.Xsf/bin/Debug
-/Connect.Testing.Koi/bin/Debug
-/Connect.Testing.Koi/obj/Debug
-/Connect.Xsf/obj/Debug
-/Dnn Connect XSF Module/.vs/Dnn Connect XSF Module/v15
-/Dnn Connect XSF Module/obj/Debug
-/packages
-/Koi/bin/
-/Koi/obj/
+**/.vs/
+**/bin/
+**/obj/
+/packages/

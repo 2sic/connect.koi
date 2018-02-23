@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Koi\Koi.csproj">
+    <ProjectReference Include="..\Koi\Connect.Koi.csproj">
       <Project>{d6af8495-a17c-42be-901b-ca319b6bddfa}</Project>
-      <Name>Koi</Name>
+      <Name>Connect.Koi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Hosting;
 
-namespace Connect.XSF
+namespace Connect.Dnn.Koi
 {
     /// <summary>
     /// Picks up a file named koi.json in the skin file which declares the skin's CSS framework

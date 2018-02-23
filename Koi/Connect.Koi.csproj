@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net451;netstandard2.0</TargetFrameworks>
     <RootNamespace>Connect.Koi</RootNamespace>
+    <AssemblyName>Connect.Koi</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
