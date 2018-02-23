@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Connect.Koi.Helpers
+namespace Connect.Koi.Internals
 {
-    internal static class ExtensionMethods
+    internal static class AsEnumerableExtensionMethods
     {
         /// <summary>
         /// Returns the input typed as a generic IEnumerable of the groups

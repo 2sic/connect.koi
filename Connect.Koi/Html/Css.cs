@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Connect.Koi.Helpers;
+using Connect.Koi.Internals;
 
-namespace Connect.Koi
+namespace Connect.Koi.Html
 {
-    public partial class TemplateHelper
+    public class Css : BuilderBase
     {
+        public Css(string selected) : base(selected) { }
+
         private const string ClassWrapper = "class=\"{0}\"";
 
 
@@ -34,14 +36,15 @@ namespace Connect.Koi
 
         public string Pick(IDictionary<string, string> list)
         {
-            var all = list.ContainsKey(Css.All) ? list[Css.All] : null;
+            var all = list.ContainsKey(CssFrameworks.All) ? list[CssFrameworks.All] : null;
             var best = list.ContainsKey(Current) ? list[Current] : null;
-            var preferred = best ?? (list.ContainsKey(Css.Unknown)
-                                ? list[Css.Unknown]
+            var preferred = best ?? (list.ContainsKey(CssFrameworks.Unknown)
+                                ? list[CssFrameworks.Unknown]
                                 : null);
 
             return $"{all} {preferred}".Trim();
         }
         #endregion
+
     }
 }
