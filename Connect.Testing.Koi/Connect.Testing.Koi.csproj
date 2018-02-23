@@ -55,8 +55,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Koi\Connect.Koi.csproj">
-      <Project>{d6af8495-a17c-42be-901b-ca319b6bddfa}</Project>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Connect.Koi\Connect.Koi.csproj">
+      <Project>{634dd8ba-4183-4cfb-83c2-97f1ead17330}</Project>
       <Name>Connect.Koi</Name>
     </ProjectReference>
   </ItemGroup>
