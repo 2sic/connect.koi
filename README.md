@@ -1,10 +1,14 @@
-# Connect.Koi - cross CSS Framework styling
+<img src="assets/koi-wide-medium.png" style="width: 100%">
 
-Koi is a solution for CMS components to dynamically adjust their output to the CSS-Framework of the current page. In other words, a component can ask the page "what CSS framwork are you using?" and based on that vary the output accordingly.
+# Connect.Koi - Styling with multiple CSS Frameworks
 
-## How to use
+Koi is a solution for CMS components to dynamically adjust their output to the CSS-Framework of the current page. In other words, a component can ask the page "what CSS framwork are you using?" and vary the output accordingly.
 
-Depending on your needs or the CMS-Framework you're targeting, you will do different things. All is documented in the [wiki](https://github.com/DNN-Connect/connect.koi/wiki). 
+It currently has an implementation for [DNN/DotNetNuke](https://github.com/dnnsoftware/Dnn.Platform) - see [wiki](https://github.com/DNN-Connect/connect.koi/wiki), and we would appreciate implementations for [Umbraco](https://github.com/umbraco/Umbraco-CMS), [NopCommerce](https://github.com/nopSolutions/nopCommerce), [Orchard](https://github.com/OrchardCMS/Orchard), [OrchardCore](https://github.com/OrchardCMS/OrchardCore) and other .net platforms.
+
+## How to install & use
+
+Depending on your needs or the CMS-Framework you're targeting, you will do different things. All is documented in the [wiki](https://github.com/DNN-Connect/connect.koi/wiki).
 
 ## For .net 4.5.1 & .net Core / Standard 2.0 and DNN 7.0+
 
