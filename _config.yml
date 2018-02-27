@@ -1,6 +1,6 @@
 remote_theme: chrisbobbe/jekyll-theme-prologue
 collections: [sections]
-avatar: assets/logos/koi-yinyang-250.png
+avatar: assets/logos/koi-yinyang-250.jpg
 
 title: Connect.Koi
 subtitle: harmony across css frameorks
