@@ -1,5 +1,5 @@
 remote_theme: chrisbobbe/jekyll-theme-prologue
-# theme: jekyll-theme-prologue
+theme: jekyll-theme-prologue
 collections: [sections]
 avatar: assets/logos/koi-yinyang-250.jpg
 
