@@ -1,0 +1,158 @@
+---
+layout: page
+title: Razor API
+permalink: /components
+icon: fa-code
+order: 5
+---
+
+<h3>API Commands</h3>
+
+<details>
+  <summary>
+      <strong><code>Koi.Css</code> - get the current CSS framework</strong>
+   </summary>
+
+In most situations this isn't even necessary, but if you want to know what framework is currently used, just ask for <code>Koi.Css</code>. For example to debug:
+
+{% highlight html %}
+@using Connect.Koi;
+<span>Currently using the @Koi.Css framework</span>
+{% endhighlight %}
+
+This will show
+
+{% highlight html %}
+<span>Currently using the bs3 framework</span>
+{% endhighlight %}
+
+</details>
+
+
+
+<details>
+  <summary>
+      <strong><code>Koi.If(...)</code> - choose a value</strong>
+   </summary>
+
+   Use <code>@Koi.If</code> to return a value (or an alternative): 
+{% highlight html %}
+@using Connect.Koi;
+<span>Bootstrap3 status is @Koi.If("bs3", "true", "false")</span>
+{% endhighlight %}
+
+<em>Note that you won't use this a lot, because of more helpers - read on.</em>
+
+</details>
+
+<details>
+  <summary>
+      <strong><code>Koi.IsUnknown</code> - detect an unknown / undefined framework</strong>
+   </summary>
+
+If the skin doesn't publish what it has, then <code>Koi.Css</code> will return <code>unk</code> for <em>unknown</em>. But in most cases, you'll actually have something in mind - so the most common commands will be:
+
+{% highlight html %}
+@using Connect.Koi;
+<span>@(Koi.IsUnknown ? "unknown" : "it's known!")</span>
+{% endhighlight %}
+
+This will show <em>unknown</em> or <em>it's known!</em> depending on the situation. But there's more.
+
+</details>
+
+<details>
+  <summary>
+      <strong><code>Koi.IfUnknown(...)</code> - output if not known</strong>
+   </summary>
+
+This syntax is used to explicitly insert something if we have an unknown framework - for example, to include Bootstrap3 if we just don't know what's included:
+
+{% highlight html %}
+@using Connect.Koi;
+@Koi.IfUnknown("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>")
+{% endhighlight %}
+
+</details>
+
+<details>
+  <summary>
+      <strong>Manually Coding the a Class Attribute (not recommended)</strong>
+   </summary>
+
+This manual way is included for those wanting more control - later on I'll show the most efficient way to do the same.
+
+{% highlight html %}
+@using Connect.Koi;
+@{
+  var mainDivClass = "ga-albums";
+  var innerDivClass = "ga-album sc-element";
+  switch(Koi.Css) {
+    case "bs3":
+      mainDivClass += "row";
+      innerDivClass += "col-xs-6 col-sm-4 col-md-4 col-lg-4";
+      break;
+    case "bs4":
+      mainDivClass += "row4";
+      innerDivClass += "col-xs-6 col-sm-4 col-md-4 col-lg-4";
+      break;
+    default: // unknown or any other one
+      mainDivClass = "row";
+      innerDivClass += "col-xs-6 col-sm-4 col-md-4 col-lg-4";
+  }
+}
+<div class="@mainDivClass")>
+  @foreach (var album in AsDynamic(Data["Default"]))
+  {
+    <div class="@innerDivClass">
+        ...
+    </div>
+  }
+</div>
+{% endhighlight %}
+
+</details>
+
+<details>
+  <summary>
+      <strong><code>Koi.Class</code> - make Class attribute using QuickFormula (recommended)</strong>
+   </summary>
+
+Now here's the probably easiest way to build such a class attribute:
+
+{% highlight html %}
+<div @Koi.Class("all='ga-albums' bs3,unk='row' bs4='row4'")>
+</div>
+{% endhighlight %}
+
+This does the same as above, basically containing the rules like:
+
+<ol>
+  <li>all frameworks get the class <em>ga-albums</em></li>
+  <li>bootstrap 3 will also get <em>row</em> added</li>
+  <li>bootstrap 4 will get <em>row4</em> added</li>
+  <li>in case the framework isn't known, it'll do the same thing as bootstrap 3</li>
+</ol>
+
+</details>
+<p>&nbsp;</p>
+<h3>The QuickFormula used in <code>@Koi.Class</code></h3>
+
+The QuickFormula is what you'll use most, whenever you use <code>@Koi.Class(...)</code>. Here some basic examples:
+
+<ul>
+  <li><code>bs3='row-m'</code></li>
+  <li><code>bs3='row-m' bs4='row-xs'</code></li>
+  <li><code>all='stuff' bs3='row' bs4='row-xs'</code></li>
+  <li><code>all='stuff' bs3,bs4='row' fnd6='fd-xyz'</code></li>
+</ul>
+
+Here's the formula setup:
+
+<ul>
+  <li>the formula can contain many parts</li>
+  <li>each part has the pattern keys='values'</li>
+  <li>keys can be one or more css-framework names, so <code>bs3</code> is valid, as well as <code>bs3,bs4,fnd6</code></li>
+  <li>you can also use the keys <code>all</code> for parts which should always be included</li>
+  <li>or <code>unk</code> in case the framework isn't known, because the theme doesn't publish the css-framework it uses</li>
+</ul>

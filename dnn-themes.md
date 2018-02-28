@@ -1,7 +1,7 @@
 ---
 layout: page
 title: DNN themes/skins
-permalink: /dnn-theme
+permalink: /dnn-themes
 icon: fa-cog
 order: 3
 ---
