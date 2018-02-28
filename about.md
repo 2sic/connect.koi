@@ -1,19 +1,12 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: About Connect.Koi
+permalink: /about
+icon: fa-plug
 order: 10
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+1. Connect.Koi was brought to you by the [DNN-Connect Association](https://www.dnn-connect.org/).
+1. The work was sponsored by [2sic](https://www.2sic.com), makers of [2sxc](https://2sxc.org) - the content management extension for DNN
+1. the lead developers are Daniel and Raphael
+1. the primary blog is the [2sxc blog](https://2sxc.org/en/blog)

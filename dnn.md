@@ -1,10 +1,12 @@
 ---
 layout: page
-title: Koi for DNN
+title: Koi for DNN 7+
 permalink: /dnn
 icon: fa-download
 order: 2
 ---
+
+<img src="assets/logos/koi-yinyang-250.png" style="float: right">
 
 What you need to know
 
