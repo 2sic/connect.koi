@@ -53,25 +53,11 @@ The following CSS frameworks appear dead and not actively maintained any more, s
 
 ## FAQ
 
-<details>
-  <summary>
-      <strong>How to use Koi with private CSS frameworks?</strong>
-   </summary>
-<p>
-You can always use your own code. Let's say you have your company internal CSS-Framework called <strong>Blast</strong>. You can just make up a code for it - like <em>blst</em> and use that in your <code>koi.json</code> and in your code. Prefer longer codes, because others may some day clash with a public code, like <em>bs1</em> would eventually clash with <strong>Bootstrap<strong>.
+### How to use Koi with private CSS frameworks?
+
+You can always use your own code. Let's say you have your company internal CSS-Framework called **Blast**. You can just make up a code for it - like `blst` and use that in your `koi.json` and in your code. Prefer longer codes, because others may some day clash with a public code, like `bs1` would eventually clash with **Bootstrap**.
 
 The public codes will always be 2-3 characters + version number, so use something different and you'll be safe.
-</p>
+### How to Use Koi if a public framework code is not yet standard?
 
-</details>
-
-<details>
-  <summary>
-      <strong>How to Use Koi if a public framework code is not yet standard?</strong>
-   </summary>
-
-<p>
 If the public framework has a minimum adoption according to the [rules](css-framework-codes#rules-for-adding-css-frameworks), please post an issue. Otherwise, please make up a code which likely would become the standard and work with that, until it becomes standardized.
-</p>
-
-</details>
