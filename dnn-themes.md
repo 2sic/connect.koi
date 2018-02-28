@@ -27,4 +27,4 @@ These codes are standardized so that theme-developers use the same keys to ident
 * `smt2` [Semantic UI 2](https://semantic-ui.com/) - download [koi.json](koi.json/smt2/koi.json)
 * `uik2` [UI Kit 2](https://getuikit.com/v2/) - download [koi.json](koi.json/uik2/koi.json)
 
-Review the [full list of css framework codes](css-framework-codes) for more.
+Review the [full list of css framework codes](css-frameworks) for more.

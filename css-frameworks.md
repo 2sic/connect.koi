@@ -1,7 +1,7 @@
 ---
 layout: page
-title: List of CSS Framework Codes
-permalink: /css-framework-codes
+title: CSS Frameworks
+permalink: /css-frameworks
 icon: fa-css3
 order: 9
 ---
