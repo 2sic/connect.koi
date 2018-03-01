@@ -3,7 +3,7 @@
     <package name="Connect_Dnn_Koi" type="Library" version="01.00.00">
       <friendlyName>DnnConnect Koi</friendlyName>
       <description>Koi</description>
-      <iconFile>~/Images/icon_extensions_32px.png</iconFile>
+      <iconFile>icon.png</iconFile>
       <owner>
         <name>dnn-connect.org</name>
         <organization>dnn-connect.org</organization>
@@ -37,6 +37,15 @@
               <path>bin</path>
             </assembly>
           </assemblies>
+        </component>
+
+        <component type="File">
+          <files>
+            <basePath>DesktopModules/Connect_Dnn_Koi</basePath>
+            <file>
+              <name>icon.png</name>
+            </file>
+          </files>
         </component>
       </components>
     </package>

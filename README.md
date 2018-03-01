@@ -4,7 +4,7 @@
 
 Koi is a solution for CMS components to dynamically adjust their output to the CSS-Framework of the current page. In other words, a component can ask the page "what CSS framwork are you using?" and vary the output accordingly.
 
-It currently has an implementation for [DNN/DotNetNuke](https://github.com/dnnsoftware/Dnn.Platform) - see [wiki](https://github.com/DNN-Connect/connect.koi/wiki), and we would appreciate implementations for [Umbraco](https://github.com/umbraco/Umbraco-CMS), [NopCommerce](https://github.com/nopSolutions/nopCommerce), [Orchard](https://github.com/OrchardCMS/Orchard), [OrchardCore](https://github.com/OrchardCMS/OrchardCore) and other .net platforms.
+It currently has an implementation for [DNN/DotNetNuke 7 - 9](https://github.com/dnnsoftware/Dnn.Platform) - see [wiki](https://github.com/DNN-Connect/connect.koi/wiki), and we would appreciate implementations for [Umbraco](https://github.com/umbraco/Umbraco-CMS), [NopCommerce](https://github.com/nopSolutions/nopCommerce), [Orchard](https://github.com/OrchardCMS/Orchard), [OrchardCore](https://github.com/OrchardCMS/OrchardCore) and other .net platforms.
 
 ## How to install & use
 
