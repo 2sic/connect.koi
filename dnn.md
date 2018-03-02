@@ -24,7 +24,8 @@ The procedure of adding Koi to your module distribution differs and depends on h
 ### Christoc's DNN Module template
 If your module is based on a current version of [Christoc's DNN Module template](https://github.com/ChrisHammond/DNNTemplates), follow these steps to add Koi:
 1. Download the latest version of Koi and unzip it
-1. Copy the _/koi_ and _/bin_ folder to your modules base folder
+1. Copy the _/koi_ folder to your modules base folder [your module]
+1. Copy the _/bin_ folder to [your module]/koi (the folder copied previously)
 1. Open **Connect_Dnn_Koi.dnn** and copy the **package** node to your own .dnn manifest file
 1. Open **ModulePackage.targets** of your module and add the following lines before the comment line `create the INSTALL RESOURCES.ZIP file`:
 ~~~~
