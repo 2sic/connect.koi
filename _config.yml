@@ -4,8 +4,8 @@ collections: [sections]
 avatar: assets/logos/koi-yinyang-250.jpg
 
 title: Connect.Koi
-subtitle: harmony across css frameorks
+subtitle: harmony across css frameworks
 description: >- # this means to ignore newlines until "baseurl:"
-  documentation of the Connec.Koi system
+  Connect.Koi connects themes to components - enabling multi-css-framework compatibility
 author: iJungleboy of the 2sxc-team
 email: info@2sxc.org

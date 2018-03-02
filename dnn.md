@@ -16,7 +16,7 @@ What you need to know
 
 ## Installing Koi for DNN
 
-To Install Koi for the .net platform [DNN](http://www.dnnsoftware.com/) just get the latest zip-installation package in the [releases](https://github.com/DNN-Connect/connect.koi/releases) and install it like any DNN extension.
+To Install Koi for the .net platform [DNN](http://www.dnnsoftware.com/) just get the latest zip-installation package in the [releases](https://connect-koi.net//releases) and install it like any DNN extension.
 
 ## Including Koi in your Module Distribution
 
