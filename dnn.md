@@ -24,9 +24,9 @@ The procedure of adding Koi to your module distribution differs and depends on h
 ### Christoc's DNN Module template
 If your module is based on a current version of [Christoc's DNN Module template](https://github.com/ChrisHammond/DNNTemplates), follow these steps to add Koi:
 1. Download the latest version of Koi and unzip it
-1. Copy the /koi and /bin folder to your modules base folder
-1. Open the Connect_Dnn_Koi.dnn file and copy the _package_ node to your own .dnn manifest file
-1. Open the ModulePackage.targets of your module and add the following lines before the comment line _create the INSTALL RESOURCES.ZIP file_:
+1. Copy the _/koi_ and _/bin_ folder to your modules base folder
+1. Open **Connect_Dnn_Koi.dnn** and copy the **package** node to your own .dnn manifest file
+1. Open **ModulePackage.targets** of your module and add the following lines before the comment line `create the INSTALL RESOURCES.ZIP file`:
 ~~~~
 	<!-- include koi folder -->
     <ItemGroup>
@@ -38,12 +38,12 @@ If your module is based on a current version of [Christoc's DNN Module template]
     </ItemGroup>
     <Copy SourceFiles="@(KoiDllFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin" />
 ~~~~
-1. Prevent the files in the Koi folder from being included in the Resources.zip of your component. You can do this by modifying the itemgoup named _InstallInclude_. Add `koi\**` to the excluded files list, e.g.: `Exclude="packages\**;koi\**"`
+1. Prevent the files in the Koi folder from being included in the Resources.zip of your component. You can do this by modifying the itemgroup named _InstallInclude_. Add `koi\**` to the excluded files list, e.g.: `Exclude="packages\**;koi\**"`
 
 ## Adding Koi manually
 It is possible to manually add Koi to a DNN extension. Though this is not recommended, it explains what the package must look like after including Koi.
 1. Extract the DNN extension
 1. Download the latest version of Koi and unzip it
-1. Copy the /koi and /bin folder from Koi to the extracted files of your extension (the bin folder will likely already exists - just add the two dll files from Koi to it)
-1. Open the Connect_Dnn_Koi.dnn file and copy the _package_ node to your own .dnn manifest file
+1. Copy the **/koi** and **/bin** folders from Koi to the extracted files of your extension
+1. Open **Connect_Dnn_Koi.dnn** and copy the **package_ node** to your own .dnn manifest file
 1. Zip the files again and test the package
