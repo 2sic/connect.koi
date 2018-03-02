@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="Connect_Dnn_Koi" type="Library" version="01.00.00">
+    <package name="Connect.Dnn.Koi" type="Library" version="01.00.00">
       <friendlyName>DnnConnect Koi</friendlyName>
       <description>Koi</description>
       <iconFile>icon.png</iconFile>
@@ -10,19 +10,19 @@
         <url>https://2sxc.org/</url>
         <email>info@2sxc.org</email>
       </owner>
-      <license src="License.txt"></license>
-      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <license src="koi\License.txt"></license>
+      <releaseNotes src="koi\ReleaseNotes.txt"></releaseNotes>
       <azureCompatible>true</azureCompatible>
       <dependencies>
         <dependency type="CoreVersion">07.00.02</dependency>
       </dependencies>
-      
+
       <components>
         <component type="ResourceFile">
           <resourceFiles>
-            <basePath>DesktopModules/Connect_Dnn_Koi</basePath>
+            <basePath>DesktopModules/Connect.Dnn.Koi/</basePath>
             <resourceFile>
-              <name>Resources.zip</name>
+              <name>koi/Resources.zip</name>
             </resourceFile>
           </resourceFiles>
         </component>
@@ -37,15 +37,6 @@
               <path>bin</path>
             </assembly>
           </assemblies>
-        </component>
-
-        <component type="File">
-          <files>
-            <basePath>DesktopModules/Connect_Dnn_Koi</basePath>
-            <file>
-              <name>icon.png</name>
-            </file>
-          </files>
         </component>
       </components>
     </package>
