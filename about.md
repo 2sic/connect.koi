@@ -6,6 +6,8 @@ icon: fa-plug
 order: 10
 ---
 
+<img src="assets/logos/koi-yinyang-250.png" style="float: right">
+
 1. Connect.Koi is released under the stewardship [DNN-Connect Association](https://www.dnn-connect.org/).
 1. The work was sponsored by [2sic](https://www.2sic.com), makers of [2sxc](https://2sxc.org) - the content management extension for DNN
 1. the lead developers are Daniel and Raphael

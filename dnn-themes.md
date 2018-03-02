@@ -6,6 +6,8 @@ icon: fa-cog
 order: 3
 ---
 
+<img src="assets/logos/koi-yinyang-250.png" style="float: right">
+
 Skins must broadcast what CSS framework they use. This does not require Koi to be installed. Simply add a **koi.json** configuration file into the skin/theme folder. As this has no side-effects, we urge all skin/theme makers to include the appropriate koi.json. This is a sample **koi.json** for Bootstrap 3:
 
 ```json

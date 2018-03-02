@@ -5,6 +5,9 @@ permalink: /css-frameworks
 icon: fa-css3
 order: 9
 ---
+
+<img src="assets/logos/koi-yinyang-250.png" style="float: right">
+
 # CSS Framework Codes
 
 This is the full list of CSS-Framework codes. Please use only these in published material. 
