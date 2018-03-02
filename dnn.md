@@ -40,7 +40,7 @@ If your module is based on a current version of [Christoc's DNN Module template]
 ~~~~
 1. Prevent the files in the Koi folder from being included in the Resources.zip of your component. You can do this by modifying the itemgroup named _InstallInclude_. Add `koi\**` to the excluded files list, e.g.: `Exclude="packages\**;koi\**"`
 
-## Adding Koi manually
+### Adding Koi manually
 It is possible to manually add Koi to a DNN extension. Though this is not recommended, it explains what the package must look like after including Koi.
 1. Extract the DNN extension
 1. Download the latest version of Koi and unzip it
