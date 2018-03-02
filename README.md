@@ -8,7 +8,7 @@ It currently has an implementation for [DNN/DotNetNuke 7 - 9](https://github.com
 
 ## How to install & use
 
-Depending on your needs or the CMS-Framework you're targeting, you will do different things. All is documented in the [wiki](https://github.com/DNN-Connect/connect.koi/wiki).
+Depending on your needs or the CMS-Framework you're targeting, you will do different things. All is documented on [connect-koi.net](https://connect-koi.net/).
 
 ## For .net 4.5.1 & .net Core / Standard 2.0 and DNN 7.0+
 
