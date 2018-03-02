@@ -45,5 +45,5 @@ It is possible to manually add Koi to a DNN extension. Though this is not recomm
 1. Extract the DNN extension
 1. Download the latest version of Koi and unzip it
 1. Copy the **/koi** and **/bin** folders from Koi to the extracted files of your extension
-1. Open **Connect_Dnn_Koi.dnn** and copy the **package_ node** to your own .dnn manifest file
+1. Open **Connect_Dnn_Koi.dnn** and copy the **package** node to your own .dnn manifest file
 1. Zip the files again and test the package
