@@ -8,11 +8,11 @@ order: 5
 
 <img src="assets/logos/koi-yinyang-250.png" style="float: right">
 
-<h3>API Commands</h3>
+<h3>Basic API</h3>
 
 <details>
   <summary>
-      <strong><code>Koi.Css</code> - get the current CSS framework</strong>
+      <strong><code>Koi.Css : string</code> - current CSS framework</strong>
    </summary>
 
 In most situations this isn't even necessary, but if you want to know what framework is currently used, just ask for <code>Koi.Css</code>. For example to debug:
@@ -31,25 +31,9 @@ This will show
 </details>
 
 
-
 <details>
   <summary>
-      <strong><code>Koi.If(...)</code> - choose a value</strong>
-   </summary>
-
-   Use <code>@Koi.If</code> to return a value (or an alternative): 
-{% highlight html %}
-@using Connect.Koi;
-<span>Bootstrap3 status is @Koi.If("bs3", "true", "false")</span>
-{% endhighlight %}
-
-<em>Note that you won't use this a lot, because of more helpers - read on.</em>
-
-</details>
-
-<details>
-  <summary>
-      <strong><code>Koi.IsUnknown</code> - detect an unknown / undefined framework</strong>
+      <strong><code>Koi.IsUnknown : bool</code> - detect an unknown / undefined framework</strong>
    </summary>
 
 If the skin doesn't publish what it has, then <code>Koi.Css</code> will return <code>unk</code> for <em>unknown</em>. But in most cases, you'll actually have something in mind - so the most common commands will be:
@@ -62,10 +46,30 @@ If the skin doesn't publish what it has, then <code>Koi.Css</code> will return <
 This will show <em>unknown</em> or <em>it's known!</em> depending on the situation. But there's more.
 
 </details>
+<p></p>
+<h3>General Html API</h3>
+
+
 
 <details>
   <summary>
-      <strong><code>Koi.IfUnknown(...)</code> - output if not known</strong>
+      <strong><code>@Koi.If(key, trueString [, falseString]) : HtmlString</code> - choose a value</strong>
+   </summary>
+
+   Use <code>@Koi.If</code> to return a value (or an alternative): 
+{% highlight html %}
+@using Connect.Koi;
+<span>Bootstrap3 status is @Koi.If("bs3", "true", "false")</span>
+{% endhighlight %}
+
+<em>Note that you won't use this a lot, because of more helpers - read on.</em>
+
+</details>
+
+
+<details>
+  <summary>
+      <strong><code>@Koi.IfUnknown(trueString [, falseString]) : HtmlString </code> - output if not known</strong>
    </summary>
 
 This syntax is used to explicitly insert something if we have an unknown framework - for example, to include Bootstrap3 if we just don't know what's included:
@@ -76,6 +80,13 @@ This syntax is used to explicitly insert something if we have an unknown framewo
 {% endhighlight %}
 
 </details>
+
+
+<p>
+</p>
+
+<h3>API to create <code>class</code> attributes</h3>
+
 
 <details>
   <summary>
@@ -117,7 +128,7 @@ This manual way is included for those wanting more control - later on I'll show 
 
 <details>
   <summary>
-      <strong><code>Koi.Class</code> to make Class attributes (recommended)</strong>
+      <strong><code>@Koi.Class(stringFormula) : HtmlString </code> (recommended)</strong>
    </summary>
 
 Now here's the probably easiest way to build such a class attribute:
@@ -137,7 +148,22 @@ This does the same as above, basically containing the rules like:
 </ol>
 
 </details>
+
 <p>&nbsp;</p>
+
+
+<h3>The keys in <code>@Koi.If(...)</code>, <code>@Koi.Is(...)</code></h3>
+
+Whenever you check for keys - like <code>@Koi.If("bs3", "it's bs3", "it's not bs3")</code> the command supports multiple keys. So you can write the following: 
+
+<ul>
+  <li><code>@Koi.Is("bs3")</code></li>
+  <li><code>@Koi.Is("bs3,bs4")</code></li>
+  <li><code>@Koi.Is("bs3,bs4,fnd6")</code></li>
+</ul>
+
+
+
 <h3>The formula used in <code>@Koi.Class</code></h3>
 
 The QuickFormula is what you'll use most, whenever you use <code>@Koi.Class(...)</code>. Here some basic examples:
@@ -158,3 +184,4 @@ Here's the formula setup:
   <li>you can also use the keys <code>all</code> for parts which should always be included</li>
   <li>or <code>unk</code> in case the framework isn't known, because the theme doesn't publish the css-framework it uses</li>
 </ul>
+
