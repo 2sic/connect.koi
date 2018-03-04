@@ -69,7 +69,7 @@ This will show <em>unknown</em> or <em>it's known!</em> depending on the situati
 
 <details>
   <summary>
-      <strong><code>@Koi.IfUnknown(trueString [, falseString]) : HtmlString </code> - output if not known</strong>
+      <strong><code>@Koi.IfUnknown(trueString [, falseString]) : HtmlString</code> - output if not known</strong>
    </summary>
 
 This syntax is used to explicitly insert something if we have an unknown framework - for example, to include Bootstrap3 if we just don't know what's included:
@@ -128,7 +128,7 @@ This manual way is included for those wanting more control - later on I'll show 
 
 <details>
   <summary>
-      <strong><code>@Koi.Class(stringFormula) : HtmlString </code> (recommended)</strong>
+      <strong><code>@Koi.Class(stringFormula) : HtmlString</code> (recommended)</strong>
    </summary>
 
 Now here's the probably easiest way to build such a class attribute:
@@ -182,6 +182,6 @@ Here's the formula setup:
   <li>each part has the pattern keys='values'</li>
   <li>keys can be one or more css-framework names, so <code>bs3</code> is valid, as well as <code>bs3,bs4,fnd6</code></li>
   <li>you can also use the keys <code>all</code> for parts which should always be included</li>
-  <li>or <code>unk</code> in case the framework isn't known, because the theme doesn't publish the css-framework it uses</li>
+  <li>or <code>unk</code> in case the framework is unknown, because the theme doesn't publish the css-framework it uses</li>
 </ul>
 
