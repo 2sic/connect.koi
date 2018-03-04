@@ -35,6 +35,32 @@ namespace Connect.Testing.Koi
             Assert.IsTrue(koi.Is(Bs3Caps));
         }
 
+        [TestMethod]
+        public void Is()
+        {
+            var koi = new Css(Bs3);
+            Assert.IsTrue(koi.Is(Bs3));
+            Assert.IsFalse(koi.Is(Bs4));
+            Assert.IsTrue(koi.Is(Bs3 + "," + Bs4));
+            Assert.IsTrue(koi.Is(Bs4 + "," + Bs3));
+            Assert.IsFalse(koi.Is(Bs4 + "," + Fd6));
+        }
+
+        [TestMethod]
+        public void IsUnknown()
+        {
+            var koi = new Css(Bs3);
+            Assert.IsFalse(koi.IsUnknown);
+
+        }
+
+        [TestMethod]
+        public void IsUnknownWhenUnknown()
+        {
+            var unk = new Css(CssFrameworks.Unknown);
+            Assert.IsTrue(unk.IsUnknown);
+        }
+
         //[TestMethod]
         //public void Pick()
         //{

@@ -51,6 +51,17 @@ namespace Connect.Koi
         public static HtmlString IfUnknown(string htmlToShow, string alternative = "") 
             => new HtmlString(Tools.Css.IfUnknown(htmlToShow, alternative));
 
+        /// <summary>
+        /// True if the framework isn't known
+        /// </summary>
+        public static bool IsUnknown => Tools.Css.IsUnknown;
+
+        /// <summary>
+        /// check if the current css framework is the expected css
+        /// </summary>
+        /// <param name="expectedCss">a key like bs3 or combination of keys like bs3,bs4</param>
+        /// <returns></returns>
+        public static bool Is(string expectedCss) => Tools.Css.Is(expectedCss);
 
     }
 }
