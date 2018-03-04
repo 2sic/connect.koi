@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Connect.Koi.Html
 {
@@ -13,7 +14,7 @@ namespace Connect.Koi.Html
             _current = selected.ToLowerInvariant();
         }
 
-        public bool Is(string compare) => string.Equals(Current, compare, StringComparison.InvariantCultureIgnoreCase);
+        //public bool Is(string compare) => string.Equals(Current, compare, StringComparison.InvariantCultureIgnoreCase);
 
 
         /// <summary>
@@ -21,8 +22,10 @@ namespace Connect.Koi.Html
         /// </summary>
         public bool IsUnknown => Current == CssFrameworks.Unknown;
 
+        public bool Is(string expectedCss) => expectedCss.ToLowerInvariant().Split(',').Contains(Current);
+
         public string If(string expectedCss, string htmlToShow, string alternative = "") 
-            => Current == expectedCss ? htmlToShow : alternative;
+            => Is(expectedCss) ? htmlToShow : alternative;
 
         public string IfUnknown(string htmlToShow, string alternative = "") 
             => If(CssFrameworks.Unknown, htmlToShow, alternative); // IsUnknown ? htmlToShow : alternative;

@@ -11,6 +11,7 @@ using System.Web.Hosting;
 
 namespace Connect.Dnn.Koi
 {
+    /// <inheritdoc />
     /// <summary>
     /// Picks up a file named koi.json in the skin file which declares the skin's CSS framework
     /// </summary>

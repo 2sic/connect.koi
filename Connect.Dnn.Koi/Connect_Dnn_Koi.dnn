@@ -1,13 +1,13 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="Connect.Dnn.Koi" type="Library" version="01.00.02">
+    <package name="Connect.Dnn.Koi" type="Library" version="01.00.03">
       <friendlyName>DnnConnect Koi</friendlyName>
       <description>Koi</description>
       <iconFile>icon.png</iconFile>
       <owner>
-        <name>dnn-connect.org</name>
+        <name>DNN Connect and 2sic/2sxc</name>
         <organization>dnn-connect.org</organization>
-        <url>https://2sxc.org/</url>
+        <url>https://connect-koi.net/</url>
         <email>info@2sxc.org</email>
       </owner>
       <license src="koi\License.txt"></license>
