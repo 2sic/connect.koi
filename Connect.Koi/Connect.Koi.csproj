@@ -4,6 +4,11 @@
     <TargetFrameworks>net451;netstandard2.0</TargetFrameworks>
     <RootNamespace>Connect.Koi</RootNamespace>
     <AssemblyName>Connect.Koi</AssemblyName>
+    <AssemblyVersion>1.0.4.*</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
+    <!-- Deterministic=False is necessary, so the version-number can contain an *-->
+    <Deterministic>False</Deterministic>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
