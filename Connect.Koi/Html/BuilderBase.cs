@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Connect.Koi.Html
 {
@@ -28,8 +27,10 @@ namespace Connect.Koi.Html
             => Is(expectedCss) ? htmlToShow : alternative;
 
         public string IfUnknown(string htmlToShow, string alternative = "") 
-            => If(CssFrameworks.Unknown, htmlToShow, alternative); // IsUnknown ? htmlToShow : alternative;
+            => If(CssFrameworks.Unknown, htmlToShow, alternative);
 
+        public string PickCss(string expectedCss, string alternative = "")
+            => If(expectedCss, _current, alternative);
 
 
     }

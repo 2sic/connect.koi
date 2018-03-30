@@ -48,8 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="TestKoi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Koi_PickCss.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
