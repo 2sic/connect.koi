@@ -24,6 +24,8 @@ namespace Connect.Koi
         /// </summary>
         public static string Css => Tools.State.CssFramework ?? CssFrameworks.Unknown;
 
+        public static string PickCss(string list, string alternative = "")
+            => Tools.Css.PickCss(list, alternative);
 
         /// <summary>
         /// A quick helper to generate a class-attribute
