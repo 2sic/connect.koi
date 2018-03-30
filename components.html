@@ -33,6 +33,28 @@ This will show
 
 <details>
   <summary>
+      <strong><code>Koi.PickCss(string list, string fallback) : string</code> - CSS framework if in list</strong>
+   </summary>
+
+Sometimes you need the CSS framework code - if it's one of the frameworks you support. Here's an example: Your component has css-files for bootstrap3 and 4, and foundation 6. And your strategy is to include the Bootstrap3 version if neither of these matches. The easiest way to do this is using <code>@Koi.PickCss("bs3,bs4,fnd6", "bs3")</code> which will return either the code "bs3", "bs4", "fnd6" if it's one of those, or "bs3" if it's another or an unknown framework. 
+
+For example:
+
+{% highlight html %}
+@using Connect.Koi;
+@* include bs3 styles if unknown *@
+@Koi.IfUnknown("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>")
+
+@* include our optimized css file for each scenario *@
+<link rel='stylesheet' href='@(Koi.PickCss("bs3,bs4,fnd6", "bs3")).css'>
+{% endhighlight %}
+
+<em>Note that this requires Connect.Koi version 1.01</em>
+
+</details>
+
+<details>
+  <summary>
       <strong><code>Koi.IsUnknown : bool</code> - detect an unknown / undefined framework</strong>
    </summary>
 
