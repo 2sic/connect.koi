@@ -14,7 +14,7 @@ namespace Connect.Koi.Html
 
 
         public string Class(string list) => Classify(() => Pick(list));
-        public string Class(IDictionary<string, string> list) => Classify(() => Pick(list));
+        //public string Class(IDictionary<string, string> list) => Classify(() => Pick(list));
 
 
 
@@ -22,13 +22,16 @@ namespace Connect.Koi.Html
 
 
         #region Pick and overloads
-        public string Pick(string list)
+        public string Pick(string list, string separator = " ")
         {
             var parts = ClassesRegEx.Matches(list).AsEnumerable()
                 .SelectMany(m => m.Groups["Name"].Value.Split(',')
                     .Select(k => new { Key = k, m.Groups["Classes"].Value })
                 )
-                .ToDictionary(s => s.Key, s => s.Value);
+                // this will put all matches of the same partial key together
+                // if we have the same key like bs3=... more than once
+                .GroupBy(s => s.Key)
+                .ToDictionary(s => s.Key, s => string.Join(separator, s.Select(v => v.Value)));
 
             return Pick(parts);
         }

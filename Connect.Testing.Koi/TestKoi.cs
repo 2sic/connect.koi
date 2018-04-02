@@ -99,11 +99,5 @@ namespace Connect.Testing.Koi
             Assert.AreEqual(C.All, result2);
         }
 
-        [TestMethod]
-        public void ClassStringNotation()
-        {
-            var clsAttrib = new Css(C.Fd6).Class(C.ClassesString);
-            Assert.AreEqual("class=\"" + C.Fd6Cls + "\"", clsAttrib);
-        }
     }
 }
