@@ -27,6 +27,10 @@
         // The unknown-framework 
         public const string Unknown = "unk";
 
+        /// <summary>
+        /// any other framework - used to detect if it has a framework, but not one of the provided
+        /// </summary>
+        public const string Other = "oth";
 
         // Bootstrap
         public const string BootstrapPrefix = "bs";
