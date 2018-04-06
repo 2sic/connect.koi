@@ -40,14 +40,11 @@ namespace Connect.Koi.Html
         public string Pick(IDictionary<string, string> list)
         {
             var all = list.GetOrNull(CssFrameworks.All);
-            var best = list.GetOrNull(Current);
 
-            if (best == null && Current != CssFrameworks.Unknown)
-                best = list.GetOrNull(CssFrameworks.Other);
+            var bestMatch = list.GetOrNull(Current) // if current is not known, it will already pick the "unk" key
+                ?? list.GetOrNull(CssFrameworks.Other); // otherwise get the stuff for the other-key
 
-            var preferred = best ?? list.GetOrNull(CssFrameworks.Unknown);
-
-            return $"{all} {preferred}".Trim();
+            return $"{all} {bestMatch}".Trim();
         }
         #endregion
 
