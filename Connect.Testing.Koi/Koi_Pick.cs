@@ -6,46 +6,9 @@ using C = Connect.Testing.Koi.Constants;
 namespace Connect.Testing.Koi
 {
     [TestClass]
-    public class TestKoi
+    public class Koi_Pick
     {
-
-
-        [TestMethod]
-        public void Basic()
-        {
-            var koi = new Css(C.Bs3);
-            Assert.AreEqual(C.Bs3, koi.Current);
-
-            Assert.IsTrue(koi.Is(C.Bs3));
-            Assert.IsTrue(koi.Is(C.Bs3Caps));
-        }
-
-        [TestMethod]
-        public void Is()
-        {
-            var koi = new Css(C.Bs3);
-            Assert.IsTrue(koi.Is(C.Bs3));
-            Assert.IsFalse(koi.Is(C.Bs4));
-            Assert.IsTrue(koi.Is(C.Bs3 + "," + C.Bs4));
-            Assert.IsTrue(koi.Is(C.Bs4 + "," + C.Bs3));
-            Assert.IsFalse(koi.Is(C.Bs4 + "," + C.Fd6));
-        }
-
-        [TestMethod]
-        public void IsUnknown()
-        {
-            var koi = new Css(C.Bs3);
-            Assert.IsFalse(koi.IsUnknown);
-
-        }
-
-        [TestMethod]
-        public void IsUnknownWhenUnknown()
-        {
-            var unk = new Css(CssFrameworks.Unknown);
-            Assert.IsTrue(unk.IsUnknown);
-        }
-
+        
         //[TestMethod]
         //public void Pick()
         //{

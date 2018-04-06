@@ -14,8 +14,6 @@ namespace Connect.Koi.Html
 
 
         public string Class(string list) => Classify(() => Pick(list));
-        //public string Class(IDictionary<string, string> list) => Classify(() => Pick(list));
-
 
 
         private static string Classify(Func<string> pick) => string.Format(ClassWrapper, pick());
@@ -35,19 +33,26 @@ namespace Connect.Koi.Html
 
             return Pick(parts);
         }
+
+
         private static Regex ClassesRegEx => new Regex(@"(?<Name>[a-z0-9,]*)[:=][\['""](?<Classes>[^\]'""]*)[\]'""]");
 
         public string Pick(IDictionary<string, string> list)
         {
-            var all = list.ContainsKey(CssFrameworks.All) ? list[CssFrameworks.All] : null;
-            var best = list.ContainsKey(Current) ? list[Current] : null;
-            var preferred = best ?? (list.ContainsKey(CssFrameworks.Unknown)
-                                ? list[CssFrameworks.Unknown]
-                                : null);
+            var all = list.GetOrNull(CssFrameworks.All);
 
-            return $"{all} {preferred}".Trim();
+            var bestMatch = list.GetOrNull(Current) // if current is not known, it will already pick the "unk" key
+                ?? list.GetOrNull(CssFrameworks.Other); // otherwise get the stuff for the other-key
+
+            return $"{all} {bestMatch}".Trim();
         }
         #endregion
 
+    }
+
+    internal static class DicHelper
+    {
+        public static string GetOrNull(this IDictionary<string, string> dict, string key) 
+            => dict.TryGetValue(key, out var value) ? value : null;
     }
 }
