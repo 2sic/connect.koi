@@ -10,6 +10,8 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         private const string Default = "default";
         private const string PartDev = "dev";
         private const string PartStaging = "staging";
+        private const string PartFolder = "folder";
+        private const string PartNotSpecified = "notspecified";
 
 
         [TestMethod]
@@ -17,16 +19,16 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         {
             var i = BuildTests(DefaultEdition, false);
             AddLiveToMap(i.Map);
-            Assert.AreEqual(DefaultEdition, i.Part("notspecified"));
-            Assert.AreEqual("live/", i.Part("folder"));
+            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified));
+            Assert.AreEqual("live/", i.Part(PartFolder));
         }
 
         [TestMethod]
         public void WithUnknownEdition()
         {
             var i = BuildTests("unknown-edition", false);
-            Assert.AreEqual(DefaultEdition, i.Part("notspecified"), "unknown edition with unknown part");
-            Assert.AreEqual(DefaultEdition, i.Part("folder"), "unknown edition with known part");
+            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified), "unknown edition with unknown part");
+            Assert.AreEqual(DefaultEdition, i.Part(PartFolder), "unknown edition with known part");
         }
 
         [TestMethod]
@@ -55,7 +57,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
                 {
                     PartDev, new EditionMap
                     {
-                        {"folder", PartDev + "/"},
+                        {PartFolder, PartDev + "/"},
                         {"logo", "dev-logo-pink"},
                         {"login", "true"}
                     }
@@ -63,7 +65,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
                 {
                     PartStaging, new EditionMap
                     {
-                        {"folder", PartStaging + "/" },
+                        {PartFolder, PartStaging + "/" },
                         {"logo", "blue"},
                         {"login", "false"}
                     }
@@ -77,7 +79,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         {
             parts.Add(DefaultEdition, new EditionMap
             {
-                {"folder", DefaultEdition + "/"},
+                {PartFolder, DefaultEdition + "/"},
                 {"logo", "live.jpg"},
                 {"login", true.ToString()}
             });

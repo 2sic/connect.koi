@@ -5,12 +5,7 @@
     /// </summary>
     public abstract class AutoDetectBase
     {
-        public string Key { get; }
 
-        protected AutoDetectBase(string key)
-        {
-            Key = key;
-        }
 
         public bool IsConfigured => !string.IsNullOrWhiteSpace(Value);
 
