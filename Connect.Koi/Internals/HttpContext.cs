@@ -1,4 +1,5 @@
 ﻿#if NET451
+using System.Net;
 using UniversalContext = System.Web.HttpContext;
 #else
 using UniversalContext = Microsoft.AspNetCore.Http.HttpContext;
@@ -23,5 +24,10 @@ namespace Connect.Koi.Internals
 #endif
             }
         }
+
+        //internal static Cookie[string key]
+        //{
+            
+        //}
     }
 }

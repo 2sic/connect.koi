@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect.Dnn.Koi", "Connect.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Connect.Koi", "Connect.Koi\Connect.Koi.csproj", "{634DD8BA-4183-4CFB-83C2-97F1EAD17330}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect.Testing.Koi.Polymorphism", "Connect.Testing.Koi.Polymorphism\Connect.Testing.Koi.Polymorphism.csproj", "{835CBAA6-22AB-4B46-A838-4136677A8256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{634DD8BA-4183-4CFB-83C2-97F1EAD17330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634DD8BA-4183-4CFB-83C2-97F1EAD17330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634DD8BA-4183-4CFB-83C2-97F1EAD17330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835CBAA6-22AB-4B46-A838-4136677A8256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835CBAA6-22AB-4B46-A838-4136677A8256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835CBAA6-22AB-4B46-A838-4136677A8256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835CBAA6-22AB-4B46-A838-4136677A8256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
