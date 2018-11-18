@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Connect.Koi.Polymorphing.Configuration;
 using Newtonsoft.Json;
 
 namespace Connect.Koi.Configuration.Json
@@ -17,8 +18,8 @@ namespace Connect.Koi.Configuration.Json
         [JsonProperty("allowAny")] public bool AllowAny;
         [JsonProperty("default")] public string DefaultName;
 
-        [JsonProperty("parts")] public Dictionary<string, Dictionary<string, string>> Parts;
+        [JsonProperty("parts")] public Dictionary<string, PartsMap> Parts;
 
-        [JsonProperty("detection")] public Dictionary<string, Dictionary<string, string>> Detectors;
+        [JsonProperty("detection")] public Dictionary<string, Dictionary<string, object>> Detectors;
     }
 }

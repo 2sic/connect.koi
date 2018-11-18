@@ -1,4 +1,5 @@
-﻿using Connect.Koi.Polymorphing;
+﻿using System.Collections.Generic;
+using Connect.Koi.Polymorphing;
 using Connect.Koi.Polymorphing.Configuration;
 using Connect.Koi.Polymorphing.Detection;
 
@@ -13,8 +14,11 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
 
         internal static AutoDetectBase PrepareTestDetector(string expectedEdition)
         {
-            TestDetection.Result = expectedEdition;
-            return new TestDetection("dummy");
+            //TestDetection.Result = expectedEdition;
+            return new TestDetection(new Dictionary<string, object>
+            {
+                {TestDetection.ConfigKeyResult, expectedEdition}
+            });
         }
 
         internal static Instance BuildTypicalInstance(string edition, bool allowAny = false)

@@ -1,4 +1,5 @@
-﻿using Connect.Koi.Polymorphing;
+﻿using System.Collections.Generic;
+using Connect.Koi.Polymorphing;
 using Connect.Koi.Polymorphing.Configuration;
 using Connect.Koi.Polymorphing.Detection;
 
@@ -21,7 +22,10 @@ namespace Connect.Koi
         {
             if (source != "cookie") return defaultEdition;
 
-            var detector = new CookieDetection(key);
+            var detector = new CookieDetection(new Dictionary<string, object>
+            {
+                {CookieDetection.ConfigKeyCookieName, key}
+            });
 
             var config = new PolymorphConfiguration(detector, defaultEdition, options);
             var instance = new Instance(config);

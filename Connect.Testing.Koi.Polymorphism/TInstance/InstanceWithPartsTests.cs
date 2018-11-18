@@ -1,4 +1,5 @@
-﻿using Connect.Koi.Polymorphing;
+﻿using System.Collections.Generic;
+using Connect.Koi.Polymorphing;
 using Connect.Koi.Polymorphing.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,7 +19,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         public void Basic()
         {
             var i = BuildTests(DefaultEdition, false);
-            AddLiveToMap(i.Configuration.Map);
+            AddLiveToMap(i.Configuration.Parts);
             Assert.IsNull(i.Part(PartNotSpecified));
             Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified, i.Name));
             Assert.AreEqual("live/", i.Part(PartFolder));
@@ -37,7 +38,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         public void WithUnknownEditionToLive()
         {
             var i = BuildTests("unknown-edition", false);
-            AddLiveToMap(i.Configuration.Map);
+            AddLiveToMap(i.Configuration.Parts);
             Assert.IsNull(i.Part("notspecified"), "unknown edition with unknown part");
             Assert.AreEqual(DefaultEdition + "/", i.Part("folder"), "unknown edition with live-default & with known part");
         }
@@ -50,9 +51,9 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
             return i;
         }
 
-        private static PartMaps BuildMap(string defaultMap)
+        private static Dictionary<string, PartsMap> BuildMap(string defaultMap)
         {
-            var map = new PartMaps(defaultMap)
+            var map = new Dictionary<string, PartsMap>
             {
                 {
                     defaultMap, new PartsMap()
@@ -68,19 +69,18 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
                 {
                     PartStaging, new PartsMap
                     {
-                        {PartFolder, PartStaging + "/" },
+                        {PartFolder, PartStaging + "/"},
                         {"logo", "blue"},
                         {"login", "false"}
                     }
                 }
             };
-
             return map;
         }
 
-        private static void AddLiveToMap(PartMaps parts)
+        private static void AddLiveToMap(PartMapReader parts)
         {
-            parts.Add(DefaultEdition, new PartsMap
+            parts.Maps.Add(DefaultEdition, new PartsMap
             {
                 {PartFolder, DefaultEdition + "/"},
                 {"logo", "live.jpg"},

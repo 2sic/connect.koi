@@ -2,20 +2,24 @@
 
 namespace Connect.Koi.Polymorphing.Configuration
 {
-    public class PartMaps : Dictionary<string, PartsMap>
+    public class PartMapReader 
     {
         internal const string AutoReturnEdition = "%~*";
         public string DefaultMap;
         public string DefaultValue;
 
+        public Dictionary<string, PartsMap> Maps;
+
         /// <summary>
         /// Initialize the map
         /// </summary>
-        /// <param name="defaultMap">default set - important for lookups when the current edition is not covered</param>
+        /// <param name="defaultMapName">default set - important for lookups when the current edition is not covered</param>
+        /// <param name="maps">dictionary to map values around</param>
         // ReSharper disable once InheritdocConsiderUsage
-        public PartMaps(string defaultMap)
+        public PartMapReader(string defaultMapName, Dictionary<string, PartsMap> maps)
         {
-            DefaultMap = defaultMap.ToLowerInvariant();
+            DefaultMap = defaultMapName.ToLowerInvariant();
+            Maps = maps;
         }
 
         /// <summary>
@@ -32,19 +36,10 @@ namespace Connect.Koi.Polymorphing.Configuration
             return result;
         }
 
-        //private static T GetFromDictionaryOrDefault<T>(Dictionary<string, T> dic, string key, string defaultKey, T defaultValue)
-        //{
-        //    if(dic.ContainsKey(key)) return dic[key];
-
-        //    if (dic.ContainsKey(defaultKey)) return dic[defaultKey];
-
-        //    return defaultValue;            
-        //}
-
         private string TryToGet(string edition, string key)
         {
-            if (!ContainsKey(edition)) return null;
-            var map = this[edition];
+            if (!Maps.ContainsKey(edition)) return null;
+            var map = Maps[edition];
             if (!map.ContainsKey(key)) return null;
             var val = map[key];
             return string.IsNullOrWhiteSpace(val) 

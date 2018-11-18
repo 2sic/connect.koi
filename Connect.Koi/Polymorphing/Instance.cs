@@ -55,7 +55,7 @@ namespace Connect.Koi.Polymorphing
         #region Parts
 
         public string Part(string partName, string defaultIfNotFound = null) 
-            => Configuration.Map.Value(Name, partName) ?? defaultIfNotFound;
+            => Configuration.Parts.Value(Name, partName) ?? defaultIfNotFound;
 
         #endregion
 

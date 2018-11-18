@@ -1,23 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Connect.Koi.Polymorphing.Detection
 {
     /// <summary>
     /// This is simply a test-detector, used for unit tests
     /// </summary>
-    public class TestDetection: AutoDetectTyped<string>
+    // ReSharper disable once InheritdocConsiderUsage
+    public class TestDetection: AutoDetectBase//Typed<string>
     {
-        public static string Result;
+        //public static string Result;
+        public const string ConfigKeyResult = "result";
 
-        public TestDetection(string configuration) : base(configuration)
+        public TestDetection(Dictionary<string, object> configuration) : base(configuration)
         {
         }
 
         protected override string GetValue()
         {
-            if(Result == null)
+            var result = Config<string>(ConfigKeyResult, null);
+            if (result == null)
                 throw new Exception("can't run tests - you must first set the static result value");
-            return Result;
+            return result;
         }
     }
 }

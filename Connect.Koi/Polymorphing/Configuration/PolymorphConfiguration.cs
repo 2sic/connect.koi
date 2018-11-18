@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Connect.Koi.Polymorphing.Detection;
 
@@ -34,21 +35,22 @@ namespace Connect.Koi.Polymorphing.Configuration
         /// <summary>
         /// Maps terms like "live" etc. to another value
         /// </summary>
-        public PartMaps Map { get; private set; }
+        public PartMapReader Parts { get; private set; }
 
-        public PolymorphConfiguration(AutoDetectBase detector, string defaultEdition = null, string values = null, PartMaps partMaps = null, bool allowAnyName = false)
+        public PolymorphConfiguration(AutoDetectBase detector, string defaultName = null, string names = null, Dictionary<string, PartsMap> partsMapping = null, bool allowAnyName = false)
         {
-            InitDefaultEdition(defaultEdition);
-            InitMaps(partMaps, defaultEdition);
-            var valArray = values?.ToLowerInvariant().Split(',').Select(o => o.Trim()).ToArray();
-            Constructor(new []{detector}, valArray, allowAnyName);
+            InitDefaultEdition(defaultName);
+            InitMaps(partsMapping, defaultName);
+            var nameArray = names?.ToLowerInvariant().Split(',').Select(o => o.Trim()).ToArray();
+            Constructor(new []{detector}, nameArray, allowAnyName);
         }
 
-        public PolymorphConfiguration(AutoDetectBase[] detectors, string defaultEdition = null, string[] names = null, PartMaps partMaps = null, bool allowAnyName = false)
+        public PolymorphConfiguration(AutoDetectBase[] detectors, string defaultName = null, string names = null, Dictionary<string, PartsMap> partsMapping = null, bool allowAnyName = false)
         {
-            InitDefaultEdition(defaultEdition);
-            InitMaps(partMaps, defaultEdition);
-            Constructor(detectors, names, allowAnyName);
+            InitDefaultEdition(defaultName);
+            InitMaps(partsMapping, defaultName);
+            var nameArray = names?.ToLowerInvariant().Split(',').Select(o => o.Trim()).ToArray();
+            Constructor(detectors, nameArray, allowAnyName);
         }
 
         private void InitDefaultEdition(string defaultEdition)
@@ -57,12 +59,13 @@ namespace Connect.Koi.Polymorphing.Configuration
             
         }
 
-        private void InitMaps(PartMaps partMaps, string defaultEdition)
+        private void InitMaps(Dictionary<string, PartsMap> partsMapping, string defaultEdition)
         {
             // if no partmap was supplied, create empty to prevent null-errors
-            if (partMaps == null)
-                partMaps = new PartMaps(defaultEdition);
-            Map = partMaps;
+            if (partsMapping == null)
+                Parts = new PartMapReader(defaultEdition, new Dictionary<string, PartsMap>());
+            else
+                Parts = new PartMapReader(defaultEdition, partsMapping);
         }
 
         //private void InitValues(stringval)
@@ -73,7 +76,7 @@ namespace Connect.Koi.Polymorphing.Configuration
             // don't do this if values were given, because that would restrict which parts are used
             if (names == null || names.Length == 0)
             {
-                var partMapNames = Map.Keys.Select(o => o.ToLowerInvariant().Trim()).ToArray();
+                var partMapNames = Parts.Maps.Keys.Select(o => o.ToLowerInvariant().Trim()).ToArray();
                 names = partMapNames;
             }
 

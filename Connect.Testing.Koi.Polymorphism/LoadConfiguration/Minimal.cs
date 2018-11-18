@@ -5,14 +5,22 @@ namespace Connect.Testing.Koi.Polymorphism.LoadConfiguration
     [TestClass]
     public class LoadMinimal: LoadBase
     {
+        private const string Nothing = @"{'default': {} }";
         private const string NoPolymorph = @"{
 'default': {
 'cssFramework': 'bs3',
 }
 }";
+        [TestMethod]
+        public void NoSettings()
+        {
+            var obj = Deserialize(Nothing);
+            Assert.IsNull(obj.Default.CssFramework);
+            Assert.IsNull(obj.Default.Polymorph);
+        }
 
         [TestMethod]
-        public void TestMethod1()
+        public void NoPolymorphSettings()
         {
             var obj = Deserialize(NoPolymorph);
             Assert.AreEqual("bs3", obj.Default.CssFramework);
