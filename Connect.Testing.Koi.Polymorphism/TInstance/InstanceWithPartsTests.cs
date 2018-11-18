@@ -18,7 +18,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         public void Basic()
         {
             var i = BuildTests(DefaultEdition, false);
-            AddLiveToMap(i.Map);
+            AddLiveToMap(i.Configuration.Map);
             Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified));
             Assert.AreEqual("live/", i.Part(PartFolder));
         }
@@ -35,15 +35,16 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         public void WithUnknownEditionToLive()
         {
             var i = BuildTests("unknown-edition", false);
-            AddLiveToMap(i.Map);
+            AddLiveToMap(i.Configuration.Map);
             Assert.AreEqual(DefaultEdition, i.Part("notspecified"), "unknown edition with unknown part");
             Assert.AreEqual(DefaultEdition + "/", i.Part("folder"), "unknown edition with known part");
         }
 
-        private static InstanceWithParts BuildTests(string expectedEdition, bool allowAny = false)
+        private static Instance BuildTests(string expectedEdition, bool allowAny = false)
         {
             var d = PrepareTestDetector(expectedEdition);
-            var i = new InstanceWithParts(d, DefaultEdition, BuildMap(Default), allowAny);
+            var c = new PolymorphConfiguration(d, DefaultEdition, null, BuildMap(Default), allowAny);
+            var i = new Instance(c);
             return i;
         }
 

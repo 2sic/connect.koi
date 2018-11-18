@@ -1,4 +1,5 @@
 ﻿using Connect.Koi.Polymorphing;
+using Connect.Koi.Polymorphing.Configuration;
 using Connect.Koi.Polymorphing.Detection;
 
 namespace Connect.Testing.Koi.Polymorphism.TInstance
@@ -19,7 +20,8 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         internal static Instance BuildTypicalInstance(string edition, bool allowAny = false)
         {
             var d = PrepareTestDetector(edition);
-            var i = new Instance(d, DefaultEdition, TypicalEditions, allowAny);
+            var c = new PolymorphConfiguration(d, DefaultEdition, TypicalEditions, null, allowAny);
+            var i = new Instance(c);
             return i;
         }
 

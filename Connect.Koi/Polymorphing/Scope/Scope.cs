@@ -11,6 +11,6 @@ namespace Connect.Koi.Polymorphing.Scope
     public abstract class Scope
     {
         public string Identifier;
-        public FullConfig Configuration;
+        public PolymorphConfiguration Configuration;
     }
 }

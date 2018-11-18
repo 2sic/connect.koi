@@ -1,32 +1,32 @@
 ﻿using System.Linq;
 using Connect.Koi.Polymorphing.Configuration;
-using Connect.Koi.Polymorphing.Detection;
 
 namespace Connect.Koi.Polymorphing
 {
     public class Instance
     {
-        public FullConfig Configuration;
+        public PolymorphConfiguration Configuration;
 
         /// <summary>
         /// Empty constructor for inheriting objects which know what they are doing
         /// </summary>
         protected Instance() { }
 
-        public Instance(FullConfig configuration)
+        public Instance(PolymorphConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public Instance(AutoDetectBase detector, string defName = null, string values = "*", bool allowAny = false)
-        {
-            Configuration = new FullConfig(
-                new[] { detector },
-                defName,
-                values.ToLowerInvariant().Split(',').Select(o => o.Trim()).ToArray(),
-                allowAny || values == "*"
-                );  
-        }
+        //public Instance(AutoDetectBase detector, string defName = null, string values = "*", bool allowAny = false)
+        //{
+        //    Configuration = new FullConfig(
+        //        detector,
+        //        defName,
+        //        values,//.ToLowerInvariant().Split(',').Select(o => o.Trim()).ToArray(),
+        //        null,
+        //        allowAny || values == "*"
+        //        );  
+        //}
 
 
         /// <summary>
@@ -47,11 +47,16 @@ namespace Connect.Koi.Polymorphing
 
             if (string.IsNullOrWhiteSpace(config)) return Configuration.DefaultName;
 
-            return Configuration.AllowAny 
+            return Configuration.AllowAnyName 
                 ? config 
-                : (Configuration.Editions.Contains(config) ? config : Configuration.DefaultName);
+                : (Configuration.Names.Contains(config) ? config : Configuration.DefaultName);
         }
 
+        #region Parts
+
+        public string Part(string partName) => Configuration.Map.Value(Name, partName);
+
+        #endregion
 
     }
 }

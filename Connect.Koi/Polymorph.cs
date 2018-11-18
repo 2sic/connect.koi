@@ -1,4 +1,5 @@
 ﻿using Connect.Koi.Polymorphing;
+using Connect.Koi.Polymorphing.Configuration;
 using Connect.Koi.Polymorphing.Detection;
 
 namespace Connect.Koi
@@ -22,7 +23,8 @@ namespace Connect.Koi
 
             var detector = new CookieDetection(key);
 
-            var instance = new Instance(detector, defaultEdition, options);
+            var config = new PolymorphConfiguration(detector, defaultEdition, options);
+            var instance = new Instance(config);
             return instance.Name;
         }
     }
