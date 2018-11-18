@@ -19,16 +19,18 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         {
             var i = BuildTests(DefaultEdition, false);
             AddLiveToMap(i.Configuration.Map);
-            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified));
+            Assert.IsNull(i.Part(PartNotSpecified));
+            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified, i.Name));
             Assert.AreEqual("live/", i.Part(PartFolder));
         }
 
         [TestMethod]
-        public void WithUnknownEdition()
+        public void WithUnknownEditionAndNoLive()
         {
             var i = BuildTests("unknown-edition", false);
-            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified), "unknown edition with unknown part");
-            Assert.AreEqual(DefaultEdition, i.Part(PartFolder), "unknown edition with known part");
+            Assert.AreEqual(DefaultEdition, i.Part(PartNotSpecified, i.Name), "unknown edition with unknown part");
+            Assert.IsNull(i.Part(PartFolder), "unknown edition with known part, no fallback");
+            Assert.AreEqual(DefaultEdition, i.Part(PartFolder, i.Name), "unknown edition with known part, fallback");
         }
 
         [TestMethod]
@@ -36,8 +38,8 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
         {
             var i = BuildTests("unknown-edition", false);
             AddLiveToMap(i.Configuration.Map);
-            Assert.AreEqual(DefaultEdition, i.Part("notspecified"), "unknown edition with unknown part");
-            Assert.AreEqual(DefaultEdition + "/", i.Part("folder"), "unknown edition with known part");
+            Assert.IsNull(i.Part("notspecified"), "unknown edition with unknown part");
+            Assert.AreEqual(DefaultEdition + "/", i.Part("folder"), "unknown edition with live-default & with known part");
         }
 
         private static Instance BuildTests(string expectedEdition, bool allowAny = false)
@@ -53,10 +55,10 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
             var map = new PartMaps(defaultMap)
             {
                 {
-                    defaultMap, new EditionMap()
+                    defaultMap, new PartsMap()
                 },
                 {
-                    PartDev, new EditionMap
+                    PartDev, new PartsMap
                     {
                         {PartFolder, PartDev + "/"},
                         {"logo", "dev-logo-pink"},
@@ -64,7 +66,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
                     }
                 },
                 {
-                    PartStaging, new EditionMap
+                    PartStaging, new PartsMap
                     {
                         {PartFolder, PartStaging + "/" },
                         {"logo", "blue"},
@@ -78,7 +80,7 @@ namespace Connect.Testing.Koi.Polymorphism.TInstance
 
         private static void AddLiveToMap(PartMaps parts)
         {
-            parts.Add(DefaultEdition, new EditionMap
+            parts.Add(DefaultEdition, new PartsMap
             {
                 {PartFolder, DefaultEdition + "/"},
                 {"logo", "live.jpg"},
