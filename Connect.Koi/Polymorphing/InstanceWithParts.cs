@@ -6,12 +6,12 @@ namespace Connect.Koi.Polymorphing
 {
     public class InstanceWithParts: Instance
     {
-        public InstanceWithParts(AutoDetectBase detector, string defaultEdition = DefaultEdition, PartMaps partMaps = null, bool allowAny = false)
+        public InstanceWithParts(AutoDetectBase detector, string defaultEdition = null, PartMaps partMaps = null, bool allowAny = false)
         {
             if(partMaps == null)
                 partMaps = new PartMaps(defaultEdition);
 
-            Constructor(
+            Configuration = new FullConfig(
                 new[] { detector },
                 defaultEdition,
                 partMaps.Keys.Select(o => o.ToLowerInvariant().Trim()).ToArray(),
@@ -28,25 +28,9 @@ namespace Connect.Koi.Polymorphing
         /// </summary>
         public PartMaps Map;
 
-        internal void BuildTestMap()
-        {
-            Map = new PartMaps(MainEdition);
-            Map.Add("default", new EditionMap
-            {
-                {"default", ""}
-            });
-            Map.Add("staging", new EditionMap
-            {
-                {"default", "staging"},
-                {"logo", "blue" },
-                {"login","false" }
-            });
-            UseMap = true;
-        }
-
         #region Properties
 
-        public string Part(string partName) => Map.Value(Edition, partName);
+        public string Part(string partName) => Map.Value(Name, partName);
 
         #endregion
 

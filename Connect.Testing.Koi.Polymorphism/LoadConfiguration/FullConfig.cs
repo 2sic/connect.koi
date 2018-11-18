@@ -3,7 +3,7 @@
 namespace Connect.Testing.Koi.Polymorphism.LoadConfiguration
 {
     [TestClass]
-    public class LoadJson: LoadBase
+    public class FullConfig: LoadBase
     {
         private const string BasicJson = @"{ 'default': {
 'cssFramework': 'bs3',
@@ -11,7 +11,7 @@ namespace Connect.Testing.Koi.Polymorphism.LoadConfiguration
     'names': 'dev,live,staging',
     'default': 'live',
     'allowAny': true,
-    'detectors': {
+    'detection': {
         'cookie': {
             'key': 'xyz'
         },

@@ -23,7 +23,7 @@ namespace Connect.Koi
             var detector = new CookieDetection(key);
 
             var instance = new Instance(detector, defaultEdition, options);
-            return instance.Edition;
+            return instance.Name;
         }
     }
 }

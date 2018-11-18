@@ -55,7 +55,7 @@
     <Compile Include="BasicTests.cs" />
     <Compile Include="LoadConfiguration\LoadBase.cs" />
     <Compile Include="LoadConfiguration\Minimal.cs" />
-    <Compile Include="LoadConfiguration\LoadJson.cs" />
+    <Compile Include="LoadConfiguration\FullConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TInstance\InstanceTestBase.cs" />
     <Compile Include="TInstance\InstanceTest.cs" />
