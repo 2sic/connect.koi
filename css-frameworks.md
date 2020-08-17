@@ -28,6 +28,8 @@ _If you need a CSS Framework which is not yet listed here, please suggest it in 
 * `mtz*` Materialize future releases
 * `smt2` [Semantic UI 2](https://semantic-ui.com/) - download [koi.json](koi.json/smt2/koi.json)
 * `smt*` Semantic UI future releases
+* `tlw1` [Tailwind CSS 1](https://tailwindcss.com/)
+* `tlw*` Tailwind CSS future releases
 * `uik2` [UI Kit 2](https://getuikit.com/v2/) - download [koi.json](koi.json/uik2/koi.json)
 * `uik3` [UI Kit 3](https://getuikit.com/)
 * `uik*` UI Kit future releases
