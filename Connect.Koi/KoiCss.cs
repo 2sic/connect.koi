@@ -1,15 +1,5 @@
 ﻿using Connect.Koi.Detectors;
 using Connect.Koi.Html;
-#if NET451
-using HtmlString = System.Web.HtmlString;
-#else
-// TODO: @STV - pls change system to
-// - compile as .net451 and .net standard 2 and .net core 5
-// If this causes trouble, then only .net 451 and .net core 5
-// Then make sure these types here return a MarkupString in .net core 5
-using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
-#endif
-
 
 namespace Connect.Koi
 {
@@ -54,9 +44,9 @@ namespace Connect.Koi
         /// <summary>
         /// A quick helper to generate a class-attribute
         /// </summary>
-        /// <param name="classes"></param>
+        /// <param name="classes">formula which will will determine what classes will be generated</param>
         /// <returns></returns>
-        public HtmlString Class(string classes) => new HtmlString(_css.Class(classes));
+        public string ClassAttribute(string classes) => _css.Class(classes);
 
         /// <summary>
         /// Show something if the CSS framework matches what you want
@@ -65,8 +55,8 @@ namespace Connect.Koi
         /// <param name="htmlToShow"></param>
         /// <param name="alternative"></param>
         /// <returns></returns>
-        public HtmlString If(string expected, string htmlToShow, string alternative = "")
-            => new HtmlString(_css.If(expected, htmlToShow, alternative));
+        public string If(string expected, string htmlToShow, string alternative = "")
+            => _css.If(expected, htmlToShow, alternative);
 
         /// <summary>
         /// Show something if the CSS framework is unknown
@@ -74,8 +64,8 @@ namespace Connect.Koi
         /// <param name="htmlToShow"></param>
         /// <param name="alternative"></param>
         /// <returns></returns>
-        public HtmlString IfUnknown(string htmlToShow, string alternative = "") 
-            => new HtmlString(_css.IfUnknown(htmlToShow, alternative));
+        public string IfUnknown(string htmlToShow, string alternative = "") 
+            => _css.IfUnknown(htmlToShow, alternative);
 
         /// <summary>
         /// True if the framework isn't known

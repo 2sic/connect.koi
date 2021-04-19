@@ -1,9 +1,4 @@
-﻿#if NET451
-using HtmlString = System.Web.HtmlString;
-#else
-using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
-#endif
-
+﻿
 namespace Connect.Koi
 {
     public interface ICssBuilder
@@ -13,7 +8,7 @@ namespace Connect.Koi
         /// </summary>
         /// <param name="classes"></param>
         /// <returns></returns>
-        HtmlString Class(string classes);
+        string ClassAttribute(string classes);
 
         /// <summary>
         /// Show something if the CSS framework matches what you want
@@ -22,7 +17,7 @@ namespace Connect.Koi
         /// <param name="htmlToShow"></param>
         /// <param name="alternative"></param>
         /// <returns></returns>
-        HtmlString If(string expected, string htmlToShow, string alternative = "");
+        string If(string expected, string htmlToShow, string alternative = "");
 
         /// <summary>
         /// Show something if the CSS framework is unknown
@@ -30,7 +25,7 @@ namespace Connect.Koi
         /// <param name="htmlToShow"></param>
         /// <param name="alternative"></param>
         /// <returns></returns>
-        HtmlString IfUnknown(string htmlToShow, string alternative = "");
+        string IfUnknown(string htmlToShow, string alternative = "");
 
     }
 }
