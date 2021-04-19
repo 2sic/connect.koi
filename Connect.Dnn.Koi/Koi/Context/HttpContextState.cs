@@ -15,7 +15,7 @@ namespace Connect.Koi.Context
         {
             get
             {
-                var items = HttpContext.Current.Items;
+                var items = System.Web.HttpContext.Current.Items;
 
                 if (items[Keys.CssFramework] == null)
                     TryToDetectTheCssFramework();
@@ -26,7 +26,7 @@ namespace Connect.Koi.Context
 
         private static void TryToDetectTheCssFramework()
         {
-            var items = HttpContext.Current.Items;
+            var items = System.Web.HttpContext.Current.Items;
 
             var framework = CssFrameworks.Unknown;
             var type = AssemblyHandling.FindInherited(typeof(ICssFramework)).FirstOrDefault();

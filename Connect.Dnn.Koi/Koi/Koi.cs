@@ -1,11 +1,8 @@
 ﻿using System;
 using Connect.Koi.Context;
 using Connect.Koi.Internals;
-#if NET451
+using System.Web;
 using HtmlString = System.Web.HtmlString;
-#else
-using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
-#endif
 
 
 namespace Connect.Koi
@@ -18,7 +15,7 @@ namespace Connect.Koi
         /// </summary>
         private static ToolsForCurrentState Tools =>
             (ToolsForCurrentState) (HttpContext.Current.Items[Keys.CurrentKoiInHttpContext]
-                    ?? (HttpContext.Current.Items[Keys.CurrentKoiInHttpContext] = new ToolsForCurrentState()));
+                                    ?? (HttpContext.Current.Items[Keys.CurrentKoiInHttpContext] = new ToolsForCurrentState()));
 
 
         /// <summary>
