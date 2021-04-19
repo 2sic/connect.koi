@@ -75,6 +75,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dnn.Koi\DnnSkinFile.cs" />
+    <Compile Include="Koi\Context\HttpContext.cs" />
+    <Compile Include="Koi\Context\HttpContextState.cs" />
+    <Compile Include="Koi\Context\ToolsForCurrentState.cs" />
+    <Compile Include="Koi\Koi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +102,7 @@
       <Name>Connect.Koi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Koi\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
