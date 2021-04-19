@@ -10,7 +10,7 @@ namespace Connect.Koi.Html
 
         public BuilderBase(string selected)
         {
-            _current = selected.ToLowerInvariant();
+            _current = selected?.ToLowerInvariant() ?? CssFrameworks.Unknown;
         }
 
 

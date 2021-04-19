@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Connect.Koi.Detectors;
+using Connect.Koi.Dnn;
 using Connect.Koi.Internals;
 
 namespace Connect.Koi.Context
@@ -28,13 +29,15 @@ namespace Connect.Koi.Context
         {
             var items = System.Web.HttpContext.Current.Items;
 
-            var framework = CssFrameworks.Unknown;
-            var type = AssemblyHandling.FindInherited(typeof(ICssFrameworkDetector)).FirstOrDefault();
-            if (type != null)
-            {
-                var resolver = (ICssFrameworkDetector) Activator.CreateInstance(type);
-                framework = resolver.AutoDetect();
-            }
+            //var framework = CssFrameworks.Unknown;
+            var resolver = new DetectKoiOfCurrentDnnTheme();
+            var framework = resolver.AutoDetect() ?? CssFrameworks.Unknown;
+            //var type = AssemblyHandling.FindInherited(typeof(ICssFrameworkDetector)).FirstOrDefault();
+            //if (type != null)
+            //{
+            //    var resolver = (ICssFrameworkDetector) Activator.CreateInstance(type);
+            //    framework = resolver.AutoDetect();
+            //}
             items.Add(Keys.CssFramework, framework ?? CssFrameworks.Unknown);
         }
     }

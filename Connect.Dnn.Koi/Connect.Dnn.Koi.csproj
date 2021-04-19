@@ -74,7 +74,8 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dnn.Koi\DnnSkinFile.cs" />
+    <Compile Include="Koi.Dnn\DetectAndCacheDnnThemeCssFramework.cs" />
+    <Compile Include="Koi.Dnn\DetectKoiOfCurrentDnnTheme.cs" />
     <Compile Include="Koi\Context\AssemblyHandling.cs" />
     <Compile Include="Koi\Context\HttpContextState.cs" />
     <Compile Include="Koi\Context\StateBase.cs" />
