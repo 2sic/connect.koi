@@ -28,8 +28,4 @@
     <Reference Include="System.Web.Abstractions" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="InternalsV1Static\" />
-  </ItemGroup>
-
 </Project>
