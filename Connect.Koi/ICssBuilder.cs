@@ -6,20 +6,8 @@ using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
 
 namespace Connect.Koi
 {
-    public interface IKoiCss
+    public interface ICssBuilder
     {
-        /// <summary>
-        /// The name of the CSS framework in use. 
-        /// </summary>
-        string Css { get; }
-
-        /// <summary>
-        /// True if the framework isn't known
-        /// </summary>
-        bool IsUnknown { get; }
-
-        string PickCss(string list, string alternative = "");
-
         /// <summary>
         /// A quick helper to generate a class-attribute
         /// </summary>
@@ -44,11 +32,5 @@ namespace Connect.Koi
         /// <returns></returns>
         HtmlString IfUnknown(string htmlToShow, string alternative = "");
 
-        /// <summary>
-        /// check if the current css framework is the expected css
-        /// </summary>
-        /// <param name="expectedCss">a key like bs3 or combination of keys like bs3,bs4</param>
-        /// <returns></returns>
-        bool Is(string expectedCss);
     }
 }

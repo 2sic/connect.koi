@@ -15,7 +15,7 @@ namespace Connect.Dnn.Koi
     /// <summary>
     /// Picks up a file named koi.json in the skin file which declares the skin's CSS framework
     /// </summary>
-    internal class DnnSkinFile : ICssFramework
+    internal class DnnSkinFile : ICssFrameworkDetector
     {
         private const string KoiJsonFile = "koi.json";
         private const string DnnSettingDefaultPortalSkin = "DefaultPortalSkin";

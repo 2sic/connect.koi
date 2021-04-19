@@ -77,6 +77,7 @@
     <Compile Include="Dnn.Koi\DnnSkinFile.cs" />
     <Compile Include="Koi\Context\AssemblyHandling.cs" />
     <Compile Include="Koi\Context\HttpContextState.cs" />
+    <Compile Include="Koi\Context\StateBase.cs" />
     <Compile Include="Koi\Context\ToolsForCurrentState.cs" />
     <Compile Include="Koi\Koi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

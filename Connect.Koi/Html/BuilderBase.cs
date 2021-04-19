@@ -6,7 +6,7 @@ namespace Connect.Koi.Html
     {
 
         public string Current => _current ?? CssFrameworks.Unknown;
-        private readonly string _current;
+        private readonly string _current = CssFrameworks.Unknown;
 
         public BuilderBase(string selected)
         {

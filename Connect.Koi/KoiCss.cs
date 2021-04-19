@@ -1,9 +1,12 @@
-﻿using Connect.Koi.Context;
+﻿using Connect.Koi.Detectors;
 using Connect.Koi.Html;
-using Connect.Koi.Internals;
 #if NET451
 using HtmlString = System.Web.HtmlString;
 #else
+// TODO: @STV - pls change system to
+// - compile as .net451 and .net standard 2 and .net core 5
+// If this causes trouble, then only .net 451 and .net core 5
+// Then make sure these types here return a MarkupString in .net core 5
 using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
 #endif
 
@@ -11,18 +14,18 @@ using HtmlString = Microsoft.AspNetCore.Html.HtmlString;
 namespace Connect.Koi
 {
 
-    public class KoiCss : IKoiCss
+    public class KoiCss : ICssInfo, ICssBuilder
     {
         /// <summary>
         /// Dependencies class - to ensure that inheriting classes don't need to worry about signature changes. 
         /// </summary>
         public class Dependencies
         {
-            public Css Css { get; }
+            public ICssFrameworkDetector CssDetector { get; }
 
-            public Dependencies(Html.Css css)
+            public Dependencies(ICssFrameworkDetector cssDetector)
             {
-                Css = css;
+                CssDetector = cssDetector;
             }
         }
         
@@ -31,29 +34,29 @@ namespace Connect.Koi
         /// </summary>
         public KoiCss(Dependencies dependencies)
         {
-            CssTodo = dependencies.Css;
+            _css = new Css(dependencies.CssDetector.AutoDetect());
         }
 
         /// <summary>
         /// Get or create a current/cached state within the current HttpContext
         /// </summary>
-        private Html.Css CssTodo;
+        private Css _css;
         
 
         /// <summary>
         /// The name of the CSS framework in use. 
         /// </summary>
-        public string Css => CssTodo.Current ?? CssFrameworks.Unknown;
+        public string Css => _css.Current ?? CssFrameworks.Unknown;
 
         public string PickCss(string list, string alternative = "")
-            => CssTodo.PickCss(list, alternative);
+            => _css.PickCss(list, alternative);
 
         /// <summary>
         /// A quick helper to generate a class-attribute
         /// </summary>
         /// <param name="classes"></param>
         /// <returns></returns>
-        public HtmlString Class(string classes) => new HtmlString(CssTodo.Class(classes));
+        public HtmlString Class(string classes) => new HtmlString(_css.Class(classes));
 
         /// <summary>
         /// Show something if the CSS framework matches what you want
@@ -63,7 +66,7 @@ namespace Connect.Koi
         /// <param name="alternative"></param>
         /// <returns></returns>
         public HtmlString If(string expected, string htmlToShow, string alternative = "")
-            => new HtmlString(CssTodo.If(expected, htmlToShow, alternative));
+            => new HtmlString(_css.If(expected, htmlToShow, alternative));
 
         /// <summary>
         /// Show something if the CSS framework is unknown
@@ -72,19 +75,19 @@ namespace Connect.Koi
         /// <param name="alternative"></param>
         /// <returns></returns>
         public HtmlString IfUnknown(string htmlToShow, string alternative = "") 
-            => new HtmlString(CssTodo.IfUnknown(htmlToShow, alternative));
+            => new HtmlString(_css.IfUnknown(htmlToShow, alternative));
 
         /// <summary>
         /// True if the framework isn't known
         /// </summary>
-        public bool IsUnknown => CssTodo.IsUnknown;
+        public bool IsUnknown => _css.IsUnknown;
 
         /// <summary>
         /// check if the current css framework is the expected css
         /// </summary>
         /// <param name="expectedCss">a key like bs3 or combination of keys like bs3,bs4</param>
         /// <returns></returns>
-        public bool Is(string expectedCss) => CssTodo.Is(expectedCss);
+        public bool Is(string expectedCss) => _css.Is(expectedCss);
 
     }
 }

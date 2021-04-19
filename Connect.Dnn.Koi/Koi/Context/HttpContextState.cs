@@ -29,10 +29,10 @@ namespace Connect.Koi.Context
             var items = System.Web.HttpContext.Current.Items;
 
             var framework = CssFrameworks.Unknown;
-            var type = AssemblyHandling.FindInherited(typeof(ICssFramework)).FirstOrDefault();
+            var type = AssemblyHandling.FindInherited(typeof(ICssFrameworkDetector)).FirstOrDefault();
             if (type != null)
             {
-                var resolver = (ICssFramework) Activator.CreateInstance(type);
+                var resolver = (ICssFrameworkDetector) Activator.CreateInstance(type);
                 framework = resolver.AutoDetect();
             }
             items.Add(Keys.CssFramework, framework ?? CssFrameworks.Unknown);
