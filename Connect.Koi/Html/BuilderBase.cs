@@ -13,15 +13,16 @@ namespace Connect.Koi.Html
             _current = selected.ToLowerInvariant();
         }
 
-        //public bool Is(string compare) => string.Equals(Current, compare, StringComparison.InvariantCultureIgnoreCase);
-
 
         /// <summary>
         /// 
         /// </summary>
         public bool IsUnknown => Current == CssFrameworks.Unknown;
 
-        public bool Is(string expectedCss) => expectedCss.ToLowerInvariant().Split(',').Contains(Current);
+        public bool Is(string expectedCss) 
+            => expectedCss.PickOrCheckOther(Current) != null;
+
+
 
         public string If(string expectedCss, string htmlToShow, string alternative = "") 
             => Is(expectedCss) ? htmlToShow : alternative;
@@ -30,8 +31,29 @@ namespace Connect.Koi.Html
             => If(CssFrameworks.Unknown, htmlToShow, alternative);
 
         public string PickCss(string expectedCss, string alternative = "")
-            => If(expectedCss, _current, alternative);
+            => expectedCss.PickOrCheckOther(Current) ?? alternative;
 
 
+    }
+
+    internal static class Helpers
+    {
+
+
+        private static string[] SplitComma(this string source)
+            => source.ToLowerInvariant().Split(',');
+
+        internal static string PickOrCheckOther(this string list, string current)
+            => list.SplitComma().PickOrCheckOther(current);
+
+        internal static string PickOrCheckOther(this string[] list, string current)
+        {
+            if (list.Contains(current)) return current;
+
+            // if it's known, check if the list contains the "oth" (other) code
+            return current != CssFrameworks.Unknown && list.Contains(CssFrameworks.Other)
+                ? CssFrameworks.Other
+                : null;
+        }
     }
 }

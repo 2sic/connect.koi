@@ -35,5 +35,9 @@ namespace Connect.Testing.Koi
         [TestMethod]
         public void PickCssBs34Fallback3OfUnknown() 
             => Assert.IsTrue(new Css(Fw.Unknown).PickCss("bs3,bs4", "bs3") == "bs3");
+
+        [TestMethod]
+        public void PickOther() 
+            => Assert.IsTrue(new Css(Fw.Foundation5).PickCss("bs3,bs4,oth", "xyz") == "oth");
     }
 }
