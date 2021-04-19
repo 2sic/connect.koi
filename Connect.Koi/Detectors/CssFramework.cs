@@ -3,8 +3,8 @@
     /// <summary>
     /// Inherit from this class to add a css framework resolver
     /// </summary>
-    public abstract class CssFramework
+    public interface ICssFramework
     {
-        public abstract string AutoDetect();
+        string AutoDetect();
     }
 }

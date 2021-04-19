@@ -4,15 +4,15 @@ namespace Connect.Testing.Koi
 {
     public class Constants
     {
-        public const string Bs3 = CssFrameworks.Bootstrap3;
-        public const string Bs4 = CssFrameworks.Bootstrap4;
-        public const string Fd6 = CssFrameworks.Foundation6;
-        public const string XyzFramework = "xyz";
+        public static string Bs3 = CssFrameworks.Bootstrap3;
+        public static string Bs4 = CssFrameworks.Bootstrap4;
+        public static string Fd6 = CssFrameworks.Foundation6;
+        public static string XyzFramework = "xyz";
 
-        public const string All = "all-classes";
-        public const string Bs3Cls = "bs-xyz bs-min";
-        public const string Bs4Cls = "bs4-xx bs4-yy";
-        public const string Fd6Cls = "fd-xyz fd-min";
+        public static string All = "all-classes";
+        public static string Bs3Cls = "bs-xyz bs-min";
+        public static string Bs4Cls = "bs4-xx bs4-yy";
+        public static string Fd6Cls = "fd-xyz fd-min";
 
         public static string Bs3Caps = CssFrameworks.Bootstrap3.ToUpper();
         public static readonly string[,] Classes = { { Bs3, Bs3Cls }, { Fd6, Fd6Cls } };

@@ -9,13 +9,14 @@ namespace Connect.Koi.Internals
     {
 
         /// <summary>
-        /// Get all Installed DataSources
+        /// Get all Installed inherited stuff
+        /// TODO: not sure if we still use this in V2
         /// </summary>
         public static IEnumerable<Type> FindInherited(Type type)
             => Types.Where(t => type.IsAssignableFrom(t) && (!t.IsAbstract || t.IsInterface) && t != type);
 
-        public static IEnumerable<Type> FindClassesWithAttribute(Type type, Type attribType, bool includeInherited)
-            => FindInherited(type).Where(d => d.GetCustomAttributes(attribType, includeInherited).Any());
+        //public static IEnumerable<Type> FindClassesWithAttribute(Type type, Type attribType, bool includeInherited)
+        //    => FindInherited(type).Where(d => d.GetCustomAttributes(attribType, includeInherited).Any());
 
         private static IEnumerable<Type> Types
             => _typeCache ?? (_typeCache = AppDomain.CurrentDomain.GetAssemblies()

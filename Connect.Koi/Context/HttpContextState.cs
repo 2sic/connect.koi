@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Connect.Koi.Detectors;
 using Connect.Koi.Internals;
@@ -30,10 +29,10 @@ namespace Connect.Koi.Context
             var items = HttpContext.Current.Items;
 
             var framework = CssFrameworks.Unknown;
-            var type = AssemblyHandling.FindInherited(typeof(CssFramework)).FirstOrDefault();
+            var type = AssemblyHandling.FindInherited(typeof(ICssFramework)).FirstOrDefault();
             if (type != null)
             {
-                var resolver = (CssFramework) Activator.CreateInstance(type);
+                var resolver = (ICssFramework) Activator.CreateInstance(type);
                 framework = resolver.AutoDetect();
             }
             items.Add(Keys.CssFramework, framework ?? CssFrameworks.Unknown);

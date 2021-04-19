@@ -15,14 +15,14 @@ namespace Connect.Dnn.Koi
     /// <summary>
     /// Picks up a file named koi.json in the skin file which declares the skin's CSS framework
     /// </summary>
-    internal class DnnSkinFile : CssFramework
+    internal class DnnSkinFile : ICssFramework
     {
         private const string KoiJsonFile = "koi.json";
         private const string DnnSettingDefaultPortalSkin = "DefaultPortalSkin";
         private const string CacheKey = "connect-koi-json-";
         private const string SkinSrcParameter = "SkinSrc";
 
-        public override string AutoDetect()
+        public string AutoDetect()
         {
             
             try
@@ -62,7 +62,7 @@ namespace Connect.Dnn.Koi
             var skin = HttpContext.Current?.Request.QueryString [SkinSrcParameter]
                     ?? PortalSettings.Current.ActiveTab.SkinSrc;
 
-            if (String.IsNullOrEmpty(skin))
+            if (string.IsNullOrEmpty(skin))
                 skin = PortalController.GetPortalSetting(DnnSettingDefaultPortalSkin, PortalSettings.Current.PortalId,
                             Host.DefaultPortalSkin);
 
