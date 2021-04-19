@@ -1,6 +1,7 @@
 ﻿
 namespace Connect.Koi
 {
+    // TODO: Rename to ICssConditions or something
     public interface ICssBuilder
     {
         /// <summary>

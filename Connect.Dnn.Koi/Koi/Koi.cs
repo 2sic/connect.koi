@@ -7,7 +7,7 @@ using HtmlString = System.Web.HtmlString;
 
 namespace Connect.Koi
 {
-    [Obsolete("Shouldn't be used any more - please get KoiClient as a Dependency Injection service")]
+    [Obsolete("Shouldn't be used any more - please get ICssInfo or ICssBuilder as a Dependency Injection service")]
     public static class Koi
     {
         /// <summary>
