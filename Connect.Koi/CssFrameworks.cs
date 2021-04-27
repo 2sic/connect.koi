@@ -35,7 +35,7 @@
         /// <summary>
         /// any other framework - used to detect if it has a framework, but not one of the provided
         /// </summary>
-        public const string Other = "oth";
+        public static readonly string Other = "oth";
 
         // Bootstrap
         public static readonly string BootstrapPrefix = "bs";

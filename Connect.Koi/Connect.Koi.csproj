@@ -9,6 +9,7 @@
     <Version>2.0.0</Version>
     <!-- Deterministic=False is necessary, so the version-number can contain an *-->
     <Deterministic>False</Deterministic>
+    <Copyright>Copyright (MIT) 2021 2sic</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
