@@ -4,7 +4,7 @@
     {
         public static string Link = "https://connect-koi.net/";
         public static string CssInformationMissing =
-            $@"This component supports multiple CSS frameworks. \n
+            $@"This component supports multiple CSS frameworks. 
 It uses <a href='{Link}' target='_blank'>Koi</a> to detect the CSS framework of the theme/skin. 
 Your page-theme doesn't broadcast it's CSS-Framework, so the output may look wrong. <br> 
 
