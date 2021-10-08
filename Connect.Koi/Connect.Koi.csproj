@@ -4,9 +4,9 @@
     <TargetFrameworks>net451;netstandard2.0</TargetFrameworks>
     <RootNamespace>Connect.Koi</RootNamespace>
     <AssemblyName>Connect.Koi</AssemblyName>
-    <AssemblyVersion>2.0.0.*</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0</Version>
+    <AssemblyVersion>02.00.01</AssemblyVersion>
+    <FileVersion>02.00.1.0</FileVersion>
+    <Version>02.00.01</Version>
     <!-- Deterministic=False is necessary, so the version-number can contain an *-->
     <Deterministic>False</Deterministic>
     <Copyright>Copyright (MIT) 2021 2sic</Copyright>
