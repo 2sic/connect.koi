@@ -13,10 +13,6 @@ namespace Connect.Koi
         /// </summary>
         bool IsUnknown { get; }
 
-        // 2021-04-27 2dm - disable for now, not sure if this is actually ever used
-        // and I don't want to increase the footprint
-        //string PickCss(string list, string alternative = "");
-
         /// <summary>
         /// check if the current css framework is the expected css
         /// </summary>

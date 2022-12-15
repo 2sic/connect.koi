@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net451;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <RootNamespace>Connect.Koi</RootNamespace>
     <AssemblyName>Connect.Koi</AssemblyName>
-    <AssemblyVersion>02.00.01</AssemblyVersion>
-    <FileVersion>02.00.1.0</FileVersion>
-    <Version>02.00.01</Version>
+    <AssemblyVersion>03.00.00</AssemblyVersion>
+    <FileVersion>03.00.00.0</FileVersion>
+    <Version>03.00.00</Version>
     <!-- Deterministic=False is necessary, so the version-number can contain an *-->
     <Deterministic>False</Deterministic>
-    <Copyright>Copyright (MIT) 2021 2sic</Copyright>
+    <Copyright>Copyright (MIT) 2022 2sic</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

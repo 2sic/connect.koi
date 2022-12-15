@@ -3,6 +3,6 @@
 	This is Connect.Koi - there are no special release notes.
 </p>
 <p class="Contributor">
-	By DNN Connect and 2sic<br />
+	By 2sic/2sxc<br />
 	Visit <a href="https://connect-koi.net/" target="_blank">https://connect-koi.net/</a> to discover more.
 </p>

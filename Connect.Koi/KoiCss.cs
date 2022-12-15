@@ -4,7 +4,7 @@ using Connect.Koi.Html;
 namespace Connect.Koi
 {
 
-    public class KoiCss : ICss // , ICssBuilder
+    public class KoiCss : ICss
     {
         /// <summary>
         /// Dependencies class - to ensure that inheriting classes don't need to worry about signature changes. 
@@ -30,7 +30,7 @@ namespace Connect.Koi
         /// <summary>
         /// Get or create a current/cached state within the current HttpContext
         /// </summary>
-        private Css _css;
+        private readonly Css _css;
         
 
         /// <summary>
@@ -38,36 +38,6 @@ namespace Connect.Koi
         /// </summary>
         public string Framework => _css.Current ?? CssFrameworks.Unknown;
 
-        // 2021-04-27 2dm - disable for now, not sure if this is actually ever used
-        // and I don't want to increase the footprint
-        //public string PickCss(string list, string alternative = "")
-        //    => _css.PickCss(list, alternative);
-
-        ///// <summary>
-        ///// A quick helper to generate a class-attribute
-        ///// </summary>
-        ///// <param name="classes">formula which will will determine what classes will be generated</param>
-        ///// <returns></returns>
-        //public string ClassAttribute(string classes) => _css.Class(classes);
-
-        ///// <summary>
-        ///// Show something if the CSS framework matches what you want
-        ///// </summary>
-        ///// <param name="expected"></param>
-        ///// <param name="htmlToShow"></param>
-        ///// <param name="alternative"></param>
-        ///// <returns></returns>
-        //public string If(string expected, string htmlToShow, string alternative = "")
-        //    => _css.If(expected, htmlToShow, alternative);
-
-        ///// <summary>
-        ///// Show something if the CSS framework is unknown
-        ///// </summary>
-        ///// <param name="htmlToShow"></param>
-        ///// <param name="alternative"></param>
-        ///// <returns></returns>
-        //public string IfUnknown(string htmlToShow, string alternative = "") 
-        //    => _css.IfUnknown(htmlToShow, alternative);
 
         /// <summary>
         /// True if the framework isn't known

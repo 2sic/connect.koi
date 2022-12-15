@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Connect.Dnn.Koi")]
-[assembly: AssemblyCopyright("Copyright (MIT) © 2021 2sic")]
+[assembly: AssemblyCopyright("Copyright (MIT) © 2023 2sic")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
