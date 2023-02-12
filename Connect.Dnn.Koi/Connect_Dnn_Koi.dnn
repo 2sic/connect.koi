@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="Connect.Dnn.Koi" type="Library" version="03.00.00">
+    <package name="Connect.Dnn.Koi" type="Library" version="03.00.01">
       <friendlyName>Connect Koi</friendlyName>
       <description>Koi</description>
       <iconFile>icon.png</iconFile>
