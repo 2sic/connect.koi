@@ -32,22 +32,43 @@ namespace Connect.Koi.Dnn
                 if (koiPath == null) return null;
                 
                 ObjectCache cache = MemoryCache.Default;
-                var cssFramework = cache[CacheKey + koiPath.ToLower()] as string;
+                var cacheKey = CacheKey + koiPath.ToLowerInvariant();
+                var cssFramework = cache[cacheKey] as string;
                 
                 if (cssFramework != null)
                     return cssFramework == "" ? null : cssFramework;
 
-                try {
-                    if (File.Exists(koiPath))
+                var koiExists = File.Exists(koiPath);
+                try
+                {
+                    if (koiExists)
                         cssFramework = Json.Decode(File.ReadAllText(koiPath))["default"]?.cssFramework;
-                } catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     DotNetNuke.Services.Exceptions.Exceptions.LogException(new Exception("Connect.Koi: Error while reading css framework from koi.json", e));
                 }
 
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.ChangeMonitors.Add(new HostFileChangeMonitor(new[] { koiPath }));
-                cache.Set(CacheKey + koiPath.ToLower(), cssFramework ?? "", policy);
+                var policy = new CacheItemPolicy();
+                if (koiExists)
+                {
+                    try
+                    {
+                        policy.ChangeMonitors.Add(new HostFileChangeMonitor(new[] { koiPath }));
+                    }
+                    catch (Exception monitorException)
+                    {
+                        DotNetNuke.Services.Exceptions.Exceptions.LogException(new Exception("Connect.Koi: Error while monitoring koi.json for changes", monitorException));
+                        policy.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(5);
+                    }
+                }
+                else
+                {
+                    // Re-check occasionally in case koi.json gets created later.
+                    policy.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(5);
+                }
+
+                cache.Set(cacheKey, cssFramework ?? "", policy);
 
                 return cssFramework;
             }
