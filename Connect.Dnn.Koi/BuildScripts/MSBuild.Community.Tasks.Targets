@@ -3,7 +3,13 @@
  <PropertyGroup>
    <MSBuildCommunityTasksPath Condition="'$(MSBuildCommunityTasksPath)' == ''">$(MSBuildProjectDirectory)\BuildScripts</MSBuildCommunityTasksPath>
    <MSBuildDnnBinPath Condition="'$(MSBuildDnnBinPath)' == ''">$(MSBuildProjectDirectory)\..\..\bin</MSBuildDnnBinPath>
-   <MSBuildCommunityTasksLib>$(SolutionDir)\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksLib>
+   <!-- The old solution-local packages folder is gone (MSBuildTasks is a PackageReference now), so
+        resolve the task assembly out of the NuGet cache instead. The package's own MSBuildTasks.targets
+        would define this too, but it is imported after us, so we have to set it here.
+        NuGetPackageRoot comes from obj\*.nuget.g.props; the UserProfile fallback covers a not-yet-restored tree. -->
+   <MSBuildCommunityTasksNuGetRoot Condition="'$(NuGetPackageRoot)' != ''">$(NuGetPackageRoot)</MSBuildCommunityTasksNuGetRoot>
+   <MSBuildCommunityTasksNuGetRoot Condition="'$(MSBuildCommunityTasksNuGetRoot)' == ''">$(UserProfile)\.nuget\packages</MSBuildCommunityTasksNuGetRoot>
+   <MSBuildCommunityTasksLib Condition="'$(MSBuildCommunityTasksLib)' == ''">$(MSBuildCommunityTasksNuGetRoot)\msbuildtasks\1.5.0.235\tools\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksLib>
  </PropertyGroup>
  <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.AspNet.InstallAspNet" />
  <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.AssemblyInfo" />
